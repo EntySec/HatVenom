@@ -27,7 +27,7 @@ if __name__ == '__main__':
         payload = pg.generate(args.format, args.arch, shellcode)
 
         if payload is None:
-            print(f"[-] Incorrect format or architecture specified!")
+            print(f"[-] Invalid format or architecture specified!")
             sys.exit(2)
 
         print(f"[i] Final payload size: {str(len(payload))}")
