@@ -37,9 +37,17 @@ parser.add_argument('--format', dest='format', help='Platform to generate for.')
 parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
 parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
 parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
+parser.add_argument('--list', action="store_true", help='List all formats and platforms.')
 args = parser.parse_args()
 
 if __name__ == '__main__':
+    if args.list:
+        print("elf:")
+        print("       x64, x86, aarch64, armle, mipsle, mipsbe")
+        print("macho:")
+        print("       x64, aarch64")
+        print("pe:")
+        print("       x64, x86")
     if args.format and args.arch and args.shellcode:
         pg = PayloadGenerator()
         filename = args.output if args.output else 'a.out'
