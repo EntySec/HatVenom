@@ -9,7 +9,9 @@
     <br>that provides support for common platforms and architectures.
     <br>
     <br>
-    <code>hi</code>
+    <code>python3 hatvenom.py --format elf --arch x64 --shellcode '\x90'</code>
+    <br>
+    <br>
     <b>Useful links:</b><br>
     <p align="center"><a href="https://hatsploit.netlify.app">HatSploit Framework</a></p>
 </p>
