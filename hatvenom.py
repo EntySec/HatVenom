@@ -13,16 +13,16 @@ parser.add_argument('-o', '--output', dest='output', help='File to output genera
 args = parser.parse_args()
 
 if __name__ == '__main__':
-    if args.format and args.arch:
+    if args.format and args.arch and args.shellcode:
         pg = PayloadGenerator()
-        shellcode = bytes(args.shellcode) if args.shellcode else b'\x00'
+        shellcode = bytes(str(args.shellcode))
         filename = args.output if args.output else 'a.out'
 
         print(f"[i] Target format: {args.format}")
         print(f"[i] Target architecture: {args.arch}")
 
         print("[*] Generating payload...")
-        payload = pg.generate(args.format, args.arch, bytes(args.shellcode))
+        payload = pg.generate(args.format, args.arch, shellcode))
         print(f"[i] Final payload size: {str(len(payload))}")
 
         print(f"[*] Saving payload to {filename}...")
@@ -31,7 +31,7 @@ if __name__ == '__main__':
         print(f"[+] Payload saved to {filename}!")
         sys.exit(1)
     else:
-        print("[-] No format and architecture specified!")
+        print("[-] No format, architecture and shellcode specified!")
 
     print("[-] Failed to generate payload!")
     sys.exit(1)
