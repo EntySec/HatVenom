@@ -7,19 +7,22 @@ from core.payload import PayloadGenerator
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--format', dest='format', help='Platform to generate for.')
-parser.add_argument('--architecture', dest='architecture', help='Architecture to generate for.')
+parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
 parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
 parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
 args = parser.parse_args()
 
 if __name__ == '__main__':
-    if args.format and args.architecture:
+    if args.format and args.arch:
         pg = PayloadGenerator()
         shellcode = bytes(args.shellcode) if args.shellcode else b'\x00'
         filename = args.output if args.output else 'a.out'
 
+        print(f"[i] Target format: {args.format}")
+        print(f"[i] Target architecture: {args.arch}")
+
         print("[*] Generating payload...")
-        payload = pg.generate(args.format, args.architecture, bytes(args.shellcode))
+        payload = pg.generate(args.format, args.arch, bytes(args.shellcode))
         print(f"[i] Final payload size: {str(len(payload))}")
 
         print(f"[*] Saving payload to {filename}...")
