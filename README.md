@@ -5,8 +5,8 @@
     <br>
     <a href="https://www.codefactor.io/repository/github/entysec/hatsploit"><img src="https://www.codefactor.io/repository/github/entysec/hatsploit/badge" alt="CodeFactor" /></a><br>
     <br>
-    Modular penetration testing platform that 
-    <br>enables you to write, test, and execute exploit code.
+    Powerful payload generation and shellcode injection tool 
+    <br>that provides support for common platforms and architectures.
     <br>
     <br>
     <b>Useful links:</b><br>
