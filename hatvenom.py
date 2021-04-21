@@ -31,27 +31,7 @@ import argparse
 
 from core.payload import PayloadGenerator
 
-description = """Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
-Copyright (c) 2020-2021 EntySec
-
-examples:
-  hatvenom.py --format elf --arch x64 --shellcode '\\x00'
-  hatvenom.py --format elf --arch mipsle --shellcode '\\x00' -o payload
-  hatvenom.py --format macho --arch x64 --shellcode '\\x00'
-
-supported formats:
-  elf
-  macho
-  pe
-
-supported architectures:
-  x64
-  x86
-  aarch64
-  armle
-  mipsle
-  mipsbe"""
-
+description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
 parser = argparse.ArgumentParser(description=description)
 parser.add_argument('--format', dest='format', help='Platform to generate for.')
 parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
