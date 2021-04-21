@@ -28,14 +28,14 @@ if __name__ == '__main__':
 
         if payload is None:
             print(f"[-] Invalid format or architecture specified!")
-            sys.exit(2)
+            sys.exit(1)
 
         print(f"[i] Final payload size: {str(len(payload))}")
         print(f"[*] Saving payload to {filename}...")
         with open(filename, 'wb') as f:
             f.write(payload)
         print(f"[+] Payload saved to {filename}!")
-        sys.exit(1)
+        sys.exit(0)
     else:
         print("[-] No format, architecture and shellcode specified!")
 
