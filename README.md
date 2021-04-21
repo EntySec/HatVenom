@@ -12,6 +12,7 @@
     <b>Usage</b><br>
     <br>
     <code>python3 hatvenom.py --format elf --arch x64 --shellcode '\x90'</code>
+    <code>python3 hatvenom.py --format macho --arch x64 --shellcode '\x90' --output trojan</code>
     <br>
     <br>
     <b>Useful links:</b><br>
