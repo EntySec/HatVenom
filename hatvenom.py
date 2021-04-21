@@ -2,6 +2,7 @@
 
 import os
 import sys
+import codecs
 import argparse
 
 from core.payload import PayloadGenerator
@@ -17,13 +18,7 @@ if __name__ == '__main__':
     if args.format and args.arch and args.shellcode:
         pg = PayloadGenerator()
         filename = args.output if args.output else 'a.out'
-
-        if os.path.exists(args.shellcode):
-            with open(args.shellcode, 'rb') as f:
-                shellcode = f.read()
-        else:
-            print(f"[-] Shellcode file not found!")
-            sys.exit(1)
+        shellcode = codecs.escape_decode(args.shellcode, 'hex')[0]
 
         print(f"[i] Target format: {args.format}")
         print(f"[i] Target architecture: {args.arch}")
