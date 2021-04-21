@@ -22,7 +22,7 @@ if __name__ == '__main__':
         print(f"[i] Target architecture: {args.arch}")
 
         print("[*] Generating payload...")
-        payload = pg.generate(args.format, args.arch, shellcode))
+        payload = pg.generate(args.format, args.arch, shellcode)
         print(f"[i] Final payload size: {str(len(payload))}")
 
         print(f"[*] Saving payload to {filename}...")
