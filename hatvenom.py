@@ -42,9 +42,24 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     if args.list:
-        print("elf: x64, x86, aarch64, armle, mipsle, mipsbe")
-        print("macho: x64, aarch64")
-        print("pe: x64, x86")
+        formats = """
+        ELF format (elf):
+            x64
+            x86
+            aarch64
+            armle
+            mipsle
+            mipsbe
+
+        PE format (pe):
+            x64
+            x86
+
+        Mach-O format (macho):
+            x64
+            aarch64
+        """
+        print(formats)
         sys.exit(0)
 
     if args.format and args.arch and args.shellcode:
