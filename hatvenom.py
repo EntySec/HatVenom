@@ -31,19 +31,28 @@ import argparse
 
 from core.payload import PayloadGenerator
 
-parser = argparse.ArgumentParser(description=(
-        "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.\n"
-        "Copyright (c) 2020-2021 EntySec\n\n"
-        "examples:\n"
-        "  hatvenom.py --format elf --arch x64 --shellcode '\x00'\n"
-        "  hatvenom.py --format elf --arch mipsle --shellcode '\x00' -o payload\n"
-        "  hatvenom.py --format macho --arch x64 --shellcode '\x00'\n"
-        "supported formats:\n"
-        "  elf\n  macho\n  pe\n"
-        "supported architectures:\n"
-        "  x64\n  x86\n  aarch64\n  armle\n  mipsle\n  mipsbe\n"
-    )
-)
+description = """Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
+Copyright (c) 2020-2021 EntySec
+
+examples:
+  hatvenom.py --format elf --arch x64 --shellcode '\\x00'
+  hatvenom.py --format elf --arch mipsle --shellcode '\\x00' -o payload
+  hatvenom.py --format macho --arch x64 --shellcode '\\x00'
+
+supported formats:
+  elf
+  macho
+  pe
+
+supported architectures:
+  x64
+  x86
+  aarch64
+  armle
+  mipsle
+  mipsbe"""
+
+parser = argparse.ArgumentParser(description=description)
 parser.add_argument('--format', dest='format', help='Platform to generate for.')
 parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
 parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
