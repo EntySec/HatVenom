@@ -3,7 +3,7 @@
 <p align="center">
     <b>HatVenom</b><br>
     <br>
-    <a href="https://www.codefactor.io/repository/github/entysec/hatsploit"><img src="https://www.codefactor.io/repository/github/entysec/hatsploit/badge" alt="CodeFactor" /></a><br>
+    <a href="https://www.codefactor.io/repository/github/entysec/hatvenom"><img src="https://www.codefactor.io/repository/github/entysec/hatvenom/badge" alt="CodeFactor" /></a><br>
     <br>
     Powerful payload generation and shellcode injection tool 
     <br>that provides support for common platforms and architectures.
