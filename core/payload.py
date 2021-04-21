@@ -27,12 +27,8 @@
 import os
 import struct
 
-from core.base.config import Config
-
 
 class PayloadGenerator:
-    config = Config()
-
     pe_headers = {
         'x86': (
             b'\x4d\x5a\x90\x00\x03\x00\x00\x00\x04\x00\x00\x00\xff\xff\x00\x00\xb8\x00\x00\x00\x00\x00\x00\x00'
