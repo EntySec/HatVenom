@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import argparse
 
@@ -15,16 +16,26 @@ args = parser.parse_args()
 if __name__ == '__main__':
     if args.format and args.arch and args.shellcode:
         pg = PayloadGenerator()
-        shellcode = bytes(str(args.shellcode))
         filename = args.output if args.output else 'a.out'
+
+        if os.path.exists(args.shellcode):
+            with open(args.shellcode, 'rb') as f:
+                shellcode = f.read()
+        else:
+            print(f"[-] Shellcode file not found!")
+            sys.exit(1)
 
         print(f"[i] Target format: {args.format}")
         print(f"[i] Target architecture: {args.arch}")
 
         print("[*] Generating payload...")
         payload = pg.generate(args.format, args.arch, shellcode)
-        print(f"[i] Final payload size: {str(len(payload))}")
 
+        if payload is None:
+            print(f"[-] Incorrect format or architecture specified!")
+            sys.exit(2)
+
+        print(f"[i] Final payload size: {str(len(payload))}")
         print(f"[*] Saving payload to {filename}...")
         with open(filename, 'wb') as f:
             f.write(payload)
