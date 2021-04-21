@@ -9,6 +9,8 @@
     <br>that provides support for common platforms and architectures.
     <br>
     <br>
+    <b>Usage</b><br>
+    <br>
     <code>python3 hatvenom.py --format elf --arch x64 --shellcode '\x90'</code>
     <br>
     <br>
