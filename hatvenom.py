@@ -7,7 +7,11 @@ import argparse
 
 from core.payload import PayloadGenerator
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description=(
+        "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.\n"
+        "Copyright (c) 2020-2021 EntySec. All rights reserved"
+    )
+)
 parser.add_argument('--format', dest='format', help='Platform to generate for.')
 parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
 parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
