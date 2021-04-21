@@ -9,6 +9,7 @@
     <br>that provides support for common platforms and architectures.
     <br>
     <br>
+    <code>hi</code>
     <b>Useful links:</b><br>
     <p align="center"><a href="https://hatsploit.netlify.app">HatSploit Framework</a></p>
 </p>
