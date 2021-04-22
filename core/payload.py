@@ -157,7 +157,7 @@ class PayloadGenerator:
     def string_to_bytes(string):
         string = string.encode().hex()
         string = '\\x' + '\\x'.join(a + b for a, b in zip(string[::2], string[1::2]))
-        result = codecs.encode(string.encode(), 'hex')
+        codecs.escape_decode(string, 'hex')[0]
         return result
 
     def generate_payload(self, file_format, arch, data, offsets={}):
