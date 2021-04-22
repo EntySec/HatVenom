@@ -24,7 +24,7 @@
 # SOFTWARE.
 #
 
-from core.hatvenom import HatVenomCLI
+from core.cli import HatVenomCLI
 from core.payload import PayloadGenerator
 
 
