@@ -10,11 +10,10 @@ Powerful payload generation and shellcode injection tool that provides support f
 
 ## How it works
 
-**1.** First we are preparing provided shellcode for injection, we are setting offsets and formatting opcodes.
-
-**2.** Next we are generating executable, we taking default format header and magic to create simple template.
-
-**3.** Then we are injecting prepared shellcode to generated template.
+* **1.** First we are preparing provided shellcode for injection, we are setting offsets and formatting opcodes.
+* **2.** Next we are generating executable, we taking default format header and magic to create simple template.
+(*for Mach-O we are using already prepared templates in templates folder*)
+* **3.** Then we are injecting prepared shellcode to generated template.
 
 ## CLI examples
 
