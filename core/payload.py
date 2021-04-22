@@ -142,7 +142,7 @@ class PayloadGenerator:
     }
 
     @staticmethod
-    def host_to_bytes(host):
+    def ipv4_to_bytes(host):
         result = b""
         for i in host.split("."):
             result += bytes([int(i)])
@@ -162,19 +162,19 @@ class PayloadGenerator:
     def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.formats.keys():
             for offset in offsets.keys():
-                if offset.lower() == 'host':
-                    data = data.replace(offset.encode(), self.host_to_bytes(offsets[offset]))
-                elif offset.lower() == 'port':
-                    data = data.replace(offset.encode(), self.port_to_bytes(offsets[offset]))
+                offset = offset.split(':')
+                if offset[2].lower() == 'ipv4':
+                    data = data.replace(offset[1].encode(), self.ipv4_to_bytes(offsets[offset]))
+                elif offset[2].lower() == 'port':
+                    data = data.replace(offset[1].encode(), self.port_to_bytes(offsets[offset]))
                 else:
-                    data = data.replace(offset.encode(), self.string_to_bytes(offsets[offset]))
+                    data = data.replace(offset[1].encode(), self.string_to_bytes(offsets[offset]))
             return self.formats[file_format](self, arch, data)
         return None
 
     def generate_pe(self, arch, data):
         if arch in self.pe_headers.keys():
             pe = self.pe_headers[arch] + data
-
             if arch in ['x86']:
                 pe += b'\xFF' * 4 + b'\x00' * 4 + b'\xFF' * 4
                 content = pe.ljust(1536, b'\x00')
@@ -189,7 +189,6 @@ class PayloadGenerator:
     def generate_elf(self, arch, data):
         if arch in self.elf_headers.keys():
             elf = self.elf_headers[arch] + data
-
             if elf[4] == 1:
                 if arch.endswith("be"):
                     p_filesz = struct.pack(">L", len(elf))
@@ -218,10 +217,8 @@ class PayloadGenerator:
                 macho_file = open(self.macho_templates[arch], 'rb')
                 macho = macho_file.read()
                 macho_file.close()
-
                 payload_index = macho.index(b'PAYLOAD:')
                 content = macho[:payload_index] + data + macho[payload_index + len(data):]
-
                 return content
         return None
 
