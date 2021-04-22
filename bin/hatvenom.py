@@ -24,7 +24,7 @@
 # SOFTWARE.
 #
 
-from hatvenom import HatVenomCLI
+from core.hatvenom import HatVenomCLI
 
 if __name__ == '__main__':
     hatvenom = HatVenomCLI()
