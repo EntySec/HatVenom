@@ -152,7 +152,7 @@ class PayloadGenerator:
         result = "%.4x" % int(port)
         return bytes.fromhex(result)
 
-    def generate(self, file_format, arch, data):
+    def generate_payload(self, file_format, arch, data):
         if file_format in self.formats.keys():
             return self.formats[file_format](self, arch, data)
         return None
