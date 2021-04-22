@@ -5,7 +5,11 @@ Powerful payload generation and shellcode injection tool that provides support f
 ## CLI examples
 
 ```bash
-python3 hatvenom.py --format elf --arch x64 --shellcode <shellcode>
+python3 hatvenom.py --format elf --arch x64 --shellcode '\x00'
+
+# With replacing offsets
+
+python3 hatvenom.py --format elf --arch x64 --shellcode '\x00:string:\x00' --offsets string=alena
 ```
 
 ## Python example
