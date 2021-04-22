@@ -26,6 +26,7 @@
 
 import os
 import struct
+import codecs
 
 
 class PayloadGenerator:
@@ -151,9 +152,21 @@ class PayloadGenerator:
     def port_to_bytes(port):
         result = "%.4x" % int(port)
         return bytes.fromhex(result)
+    
+    @staticmethod
+    def string_to_bytes(string):
+        result = codecs.encode(string.encode(), 'hex')
+        return result
 
-    def generate_payload(self, file_format, arch, data):
+    def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.formats.keys():
+            for offset in offsets.keys():
+                if offset.lower() == 'host':
+                    data = data.replace(offset.encode(), self.host_to_bytes(offsets[offset]))
+                elif offset.lower() == 'port':
+                    data = data.replace(offset.encode(), self.port_to_bytes(offsets[offset]))
+                else:
+                    data = data.replace(offset.encode(), self.string_to_bytes(offsets[offset]))
             return self.formats[file_format](self, arch, data)
         return None
 
