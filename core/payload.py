@@ -216,12 +216,13 @@ class PayloadGenerator:
     def generate_macho(self, arch, data):
         if arch in self.macho_templates.keys():
             if os.path.exists(self.macho_templates[arch]):
-                macho_file = open(self.macho_templates[arch], 'rb')
-                macho = macho_file.read()
-                macho_file.close()
-                payload_index = macho.index(b'PAYLOAD:')
-                content = macho[:payload_index] + data + macho[payload_index + len(data):]
-                return content
+                if len(data) >= len('PAYLOAD:'):
+                    macho_file = open(self.macho_templates[arch], 'rb')
+                    macho = macho_file.read()
+                    macho_file.close()
+                    payload_index = macho.index(b'PAYLOAD:')
+                    content = macho[:payload_index] + data + macho[payload_index + len(data):]
+                    return content
         return None
 
     formats = {
