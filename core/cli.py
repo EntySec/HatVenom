@@ -56,7 +56,7 @@ class HatVenomCLI(PayloadGenerator):
             print(f"[i] Target architecture: {self.args.arch}")
 
             print("[*] Generating payload...")
-            payload = self.generate(self.args.format, self.args.arch, shellcode)
+            payload = self.generate_payload(self.args.format, self.args.arch, shellcode)
 
             if payload is None:
                 print(f"[-] Invalid format or architecture specified!")
