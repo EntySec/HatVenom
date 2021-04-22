@@ -34,11 +34,9 @@ from core.payload import PayloadGenerator
 
 class HatVenom(PayloadGenerator):
     def generate(self, file_format, arch, shellcode):
-        shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
         return self.generate(file_format, arch, shellcode)
 
     def generate_to(self, file_format, arch, shellcode, filename='a.out'):
-        shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
         with open(filename, 'wb') as f:
             f.write(self.generate(file_format, arch, shellcode))
 
