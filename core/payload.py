@@ -26,7 +26,6 @@
 
 import os
 import struct
-import codecs
 
 
 class PayloadGenerator:
@@ -155,6 +154,7 @@ class PayloadGenerator:
     
     @staticmethod
     def string_to_bytes(string):
+        string = string.encode().hex()
         string = '\\x' + '\\x'.join(a + b for a, b in zip(string[::2], string[1::2]))
         result = codecs.encode(string.encode(), 'hex')
         return result
