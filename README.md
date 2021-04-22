@@ -31,6 +31,8 @@ hatvenom.generate_to('elf', 'x64', shellcode)
 
 ## Replacing offsets
 
+HatVenom allows you to replace offsets in your shellcode, that means that you can create executable files with injected value.
+
 ```python
 from hatvenom import HatVenom
 
@@ -38,7 +40,7 @@ shellcode = (
     b"\x48\x31\xf6\x56\x48\xbf"
     b"string"
     b"\x57\x48\x89\xe7\x48\x31"
-    b"\xd2\x48\x31\xc0\xb0\x02
+    b"\xd2\x48\x31\xc0\xb0\x02"
     b"\x48\xc1\xc8\x28\xb0\x3b"
     b"\x0f\x05"
 )
