@@ -38,6 +38,7 @@ class HatVenomCLI(PayloadGenerator):
     parser.add_argument('--format', dest='format', help='Platform to generate for.')
     parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
     parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
+    parser.add_argument('--offsets', dest='offsets', help='Shellcode offsets.', type=dict)
     parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
     parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
     args = parser.parse_args()
@@ -56,7 +57,9 @@ class HatVenomCLI(PayloadGenerator):
             print(f"[i] Target architecture: {self.args.arch}")
 
             print("[*] Generating payload...")
-            payload = self.generate_payload(self.args.format, self.args.arch, shellcode)
+            if not self.args.offsets:
+                offsets = dict()
+            payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
 
             if payload is None:
                 print(f"[-] Invalid format or architecture specified!")
