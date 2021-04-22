@@ -59,6 +59,8 @@ class HatVenomCLI(PayloadGenerator):
             sys.exit(0)
 
         if self.args.format and self.args.arch and self.args.shellcode:
+            offsets = dict() if not self.args.offsets else self.args.offsets
+
             filename = self.args.output if self.args.output else 'a.out'
             shellcode = codecs.escape_decode(self.args.shellcode, 'hex')[0]
 
@@ -66,8 +68,6 @@ class HatVenomCLI(PayloadGenerator):
             print(f"[i] Target architecture: {self.args.arch}")
 
             print("[*] Generating payload...")
-            if not self.args.offsets:
-                offsets = dict()
             payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
 
             if payload is None:
