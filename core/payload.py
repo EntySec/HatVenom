@@ -162,15 +162,15 @@ class PayloadGenerator:
     def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.formats.keys():
             for offset in offsets.keys():
-                offset = offset.split(':')
-                if len(offset) not in [3, 4]:
+                coffset = offset.split(':')
+                if len(coffset) not in [3, 4]:
                     return None
-                if offset[2].lower() == 'ipv4':
-                    data = data.replace(offset[1].encode(), self.ipv4_to_bytes(offsets[offset]))
-                elif offset[2].lower() == 'port':
-                    data = data.replace(offset[1].encode(), self.port_to_bytes(offsets[offset]))
+                if coffset[2].lower() == 'ipv4':
+                    data = data.replace(coffset[1].encode(), self.ipv4_to_bytes(offsets[offset]))
+                elif coffset[2].lower() == 'port':
+                    data = data.replace(coffset[1].encode(), self.port_to_bytes(offsets[offset]))
                 else:
-                    data = data.replace(offset[1].encode(), self.string_to_bytes(offsets[offset]))
+                    data = data.replace(coffset[1].encode(), self.string_to_bytes(offsets[offset]))
             return self.formats[file_format](self, arch, data)
         return None
 
