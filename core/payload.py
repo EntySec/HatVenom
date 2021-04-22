@@ -26,6 +26,7 @@
 
 import os
 import struct
+import codecs
 
 
 class PayloadGenerator:
