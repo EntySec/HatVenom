@@ -163,6 +163,8 @@ class PayloadGenerator:
         if file_format in self.formats.keys():
             for offset in offsets.keys():
                 offset = offset.split(':')
+                if len(offset) not in [3, 4]:
+                    return None
                 if offset[2].lower() == 'ipv4':
                     data = data.replace(offset[1].encode(), self.ipv4_to_bytes(offsets[offset]))
                 elif offset[2].lower() == 'port':
