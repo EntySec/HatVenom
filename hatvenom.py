@@ -42,6 +42,7 @@ class HatVenom(PayloadGenerator):
         with open(filename, 'wb') as f:
             f.write(self.generate(file_format, arch, shellcode))
 
+
 class HatVenomCLI(PayloadGenerator):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
     parser = argparse.ArgumentParser(description=description)
