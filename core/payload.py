@@ -211,32 +211,8 @@ class PayloadGenerator:
                 return content
         return None
 
-    @staticmethod
-    def generate_c(arch, data):
-        shellcode = "unsigned char shellcode[] = {\n    \""
-        for idx, x in enumerate(data):
-            if idx % 15 == 0 and idx != 0:
-                shellcode += "\"\n    \""
-            shellcode += "\\x%02x" % x
-        shellcode += "\"\n};\n"
-
-        c = ""
-        c += "#include <stdio.h>\n"
-        c += "#include <string.h>\n"
-        c += "\n"
-        c += shellcode
-        c += "\n"
-        c += "int main()\n"
-        c += "{\n"
-        c += "    int (*ret)() = (int(*)())shellcode;\n"
-        c += "    ret();\n"
-        c += "}\n"
-
-        return c.encode()
-
     formats = {
         'pe': generate_pe,
         'elf': generate_elf,
-        'macho': generate_macho,
-        'c': generate_c
+        'macho': generate_macho
     }
