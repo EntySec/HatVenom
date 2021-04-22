@@ -33,14 +33,14 @@ from core.payload import PayloadGenerator
 
 
 class HatVenom(PayloadGenerator):
-    def generate(self, fmt, arch, shellcode):
+    def generate(self, file_format, arch, shellcode):
         shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
-        return self.generate(fmt, arch, shellcode)
+        return self.generate(file_format, arch, shellcode)
 
-    def generate_to(self, fmt, arch, shellcode, filename='a.out'):
+    def generate_to(self, file_format, arch, shellcode, filename='a.out'):
         shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
         with open(filename, 'wb') as f:
-            f.write(self.generate(fmt, arch, shellcode))
+            f.write(self.generate(file_format, arch, shellcode))
 
 class HatVenomCLI(PayloadGenerator):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
