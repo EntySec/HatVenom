@@ -32,13 +32,22 @@ import argparse
 from core.payload import PayloadGenerator
 
 
+class StoreDictKeyPair(argparse.Action):
+     def __call__(self, parser, namespace, values, option_string=None):
+         my_dict = {}
+         for kv in values.split(","):
+             k,v = kv.split("=")
+             my_dict[k] = v
+         setattr(namespace, self.dest, my_dict)
+
+
 class HatVenomCLI(PayloadGenerator):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--format', dest='format', help='Platform to generate for.')
     parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
     parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
-    parser.add_argument('--offsets', dest='offsets', help='Shellcode offsets.', type=dict)
+    parser.add_argument('--offsets', dest='offsets', help='Shellcode offsets.', action=StoreDictKeyPair)
     parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
     parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
     args = parser.parse_args()
