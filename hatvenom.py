@@ -29,12 +29,12 @@ from core.payload import PayloadGenerator
 
 
 class HatVenom(PayloadGenerator):
-    def generate(self, file_format, arch, shellcode):
-        return self.generate_payload(file_format, arch, shellcode)
+    def generate(self, file_format, arch, shellcode, offsets={}):
+        return self.generate_payload(file_format, arch, shellcode, offsets)
 
-    def generate_to(self, file_format, arch, shellcode, filename='a.out'):
+    def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out'):
         with open(filename, 'wb') as f:
-            f.write(self.generate_payload(file_format, arch, shellcode))
+            f.write(self.generate_payload(file_format, arch, shellcode, offsets))
 
 if __name__ == '__main__':
     hatvenom = HatVenomCLI()
