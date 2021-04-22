@@ -31,60 +31,54 @@ import argparse
 
 from core.payload import PayloadGenerator
 
-description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
-parser = argparse.ArgumentParser(description=description)
-parser.add_argument('--format', dest='format', help='Platform to generate for.')
-parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
-parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
-parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
-parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
-args = parser.parse_args()
+class HatVenom(PayloadGenerator):
+    def generate(self, fmt, arch, shellcode):
+        shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
+        return self.generate(fmt, arch, shellcode)
 
-if __name__ == '__main__':
-    if args.list:
-        formats = """
-        ELF format (elf):
-            x64
-            x86
-            aarch64
-            armle
-            mipsle
-            mipsbe
-
-        PE format (pe):
-            x64
-            x86
-
-        Mach-O format (macho):
-            x64
-            aarch64
-        """
-        print(formats)
-        sys.exit(0)
-
-    if args.format and args.arch and args.shellcode:
-        pg = PayloadGenerator()
-        filename = args.output if args.output else 'a.out'
-        shellcode = codecs.escape_decode(args.shellcode, 'hex')[0]
-
-        print(f"[i] Target format: {args.format}")
-        print(f"[i] Target architecture: {args.arch}")
-
-        print("[*] Generating payload...")
-        payload = pg.generate(args.format, args.arch, shellcode)
-
-        if payload is None:
-            print(f"[-] Invalid format or architecture specified!")
-            sys.exit(1)
-
-        print(f"[i] Final payload size: {str(len(payload))}")
-        print(f"[*] Saving payload to {filename}...")
+    def generate_to(self, fmt, arch, shellcode, filename='a.out'):
+        shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
         with open(filename, 'wb') as f:
-            f.write(payload)
-        print(f"[+] Payload saved to {filename}!")
-        sys.exit(0)
-    else:
-        print("[-] No format, architecture and shellcode specified!")
+            f.write(self.generate(fmt, arch, shellcode))
 
-    print("[-] Failed to generate payload!")
-    sys.exit(1)
+class HatVenomCLI(PayloadGenerator):
+    description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('--format', dest='format', help='Platform to generate for.')
+    parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
+    parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
+    parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
+    parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
+    args = parser.parse_args()
+
+    def load(self):
+        if self.args.list:
+            formats = ""
+            print(formats)
+            sys.exit(0)
+
+        if self.args.format and self.args.arch and self.args.shellcode:
+            filename = self.args.output if self.args.output else 'a.out'
+            shellcode = codecs.escape_decode(self.args.shellcode, 'hex')[0]
+
+            print(f"[i] Target format: {self.args.format}")
+            print(f"[i] Target architecture: {self.args.arch}")
+
+            print("[*] Generating payload...")
+            payload = self.generate(self.args.format, self.args.arch, shellcode)
+
+            if payload is None:
+                print(f"[-] Invalid format or architecture specified!")
+                sys.exit(1)
+
+            print(f"[i] Final payload size: {str(len(payload))}")
+            print(f"[*] Saving payload to {filename}...")
+            with open(filename, 'wb') as f:
+                f.write(payload)
+            print(f"[+] Payload saved to {filename}!")
+            sys.exit(0)
+        else:
+            print("[-] No format, architecture and shellcode specified!")
+
+        print("[-] Failed to generate payload!")
+        sys.exit(1)
