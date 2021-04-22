@@ -32,15 +32,6 @@ import argparse
 from core.payload import PayloadGenerator
 
 
-class HatVenom(PayloadGenerator):
-    def generate(self, file_format, arch, shellcode):
-        return self.generate(file_format, arch, shellcode)
-
-    def generate_to(self, file_format, arch, shellcode, filename='a.out'):
-        with open(filename, 'wb') as f:
-            f.write(self.generate(file_format, arch, shellcode))
-
-
 class HatVenomCLI(PayloadGenerator):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
     parser = argparse.ArgumentParser(description=description)
