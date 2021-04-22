@@ -38,7 +38,7 @@ from hatvenom import HatVenom
 
 shellcode = (
     b"\x48\x31\xf6\x56\x48\xbf"
-    b"string"
+    b":string:"
     b"\x57\x48\x89\xe7\x48\x31"
     b"\xd2\x48\x31\xc0\xb0\x02"
     b"\x48\xc1\xc8\x28\xb0\x3b"
@@ -48,3 +48,5 @@ shellcode = (
 hatvenom = HatVenom()
 hatvenom.generate_to('macho', 'x64', shellcode, {'string':'//bin/sh'})
 ```
+
+Offsets must be this type `:offset:` or if you want to specify offset type - `:offset:ipv4:`.
