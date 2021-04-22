@@ -2,6 +2,12 @@
 
 Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
 
+## Features
+
+* Support for most common executable formats like `elf`, `macho`, `pe`.
+* Support for most common architectures like `x64`, `x86`, `aarch64`, `armle`, `mipsle`, `mipsbe`.
+* Ability to modify shellcode by changing pre-defined offsets.
+
 ## CLI examples
 
 ```bash
