@@ -25,6 +25,16 @@
 #
 
 from core.hatvenom import HatVenomCLI
+from core.payload import PayloadGenerator
+
+
+class HatVenom(PayloadGenerator):
+    def generate(self, file_format, arch, shellcode):
+        return self.generate(file_format, arch, shellcode)
+
+    def generate_to(self, file_format, arch, shellcode, filename='a.out'):
+        with open(filename, 'wb') as f:
+            f.write(self.generate(file_format, arch, shellcode))
 
 if __name__ == '__main__':
     hatvenom = HatVenomCLI()
