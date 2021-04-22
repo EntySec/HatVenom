@@ -8,6 +8,14 @@ Powerful payload generation and shellcode injection tool that provides support f
 * Support for most common architectures like `x64`, `x86`, `aarch64`, `armle`, `mipsle`, `mipsbe`.
 * Ability to modify shellcode by changing pre-defined offsets.
 
+## How it works
+
+**1.** First we are preparing provided shellcode for injection, we are setting offsets and formatting opcodes.
+
+**2.** Next we are generating executable, we taking default format header and magic to create simple template.
+
+**3.** Then we are injecting prepared shellcode to generated template.
+
 ## CLI examples
 
 ```bash
