@@ -31,6 +31,7 @@ import argparse
 
 from core.payload import PayloadGenerator
 
+
 class HatVenom(PayloadGenerator):
     def generate(self, fmt, arch, shellcode):
         shellcode = shellcode if type(shellcode) == bytes else shellcode.encode()
@@ -51,7 +52,7 @@ class HatVenomCLI(PayloadGenerator):
     parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
     args = parser.parse_args()
 
-    def load(self):
+    def start(self):
         if self.args.list:
             formats = ""
             print(formats)
