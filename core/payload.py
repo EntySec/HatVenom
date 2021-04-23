@@ -166,9 +166,9 @@ class PayloadGenerator:
                     data = data.replace((':' + offset + ':ip:').encode(), self.ip_to_bytes(offsets[offset]))
                 elif (':' + offset + ':port:').encode() in data:
                     data = data.replace((':' + offset + ':port:').encode(), self.port_to_bytes(offsets[offset]))
-                elif (':' + offset + ':string').encode() in data:
+                elif (':' + offset + ':string:').encode() in data:
                     data = data.replace((':' + offset + ':').encode(), self.string_to_bytes(offsets[offset]))
-                elif (':' + offset + ':').encode() in data or (':' + offset + ':raw').encode() in data:
+                elif (':' + offset + ':').encode() in data or (':' + offset + ':raw:').encode() in data:
                     sub = offsets[offset] if type(offsets[offset]) == bytes else codecs.escape_decode(
                         offsets[offset].encode().hex(), 'hex')[0]
                     data = data.replace((':' + offset + ':').encode(), sub)
