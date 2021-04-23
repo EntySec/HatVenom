@@ -82,8 +82,8 @@ class PayloadGenerator:
     }
 
     macho_templates = {
-        'x64': os.path.split(__file__)[0] + "/../templates/macho_x64.bin",
-        'aarch64': os.path.split(__file__)[0] + "/../templates/macho_aarch64.bin"
+        'x64': "templates/macho_x64.bin",
+        'aarch64': "templates/macho_aarch64.bin"
     }
 
     elf_headers = {
@@ -142,7 +142,7 @@ class PayloadGenerator:
     }
 
     @staticmethod
-    def ipv4_to_bytes(host):
+    def ip_to_bytes(host):
         result = b""
         for i in host.split("."):
             result += bytes([int(i)])
@@ -152,7 +152,7 @@ class PayloadGenerator:
     def port_to_bytes(port):
         result = "%.4x" % int(port)
         return bytes.fromhex(result)
-    
+
     @staticmethod
     def string_to_bytes(string):
         string = string.encode().hex()
@@ -162,8 +162,8 @@ class PayloadGenerator:
     def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.formats.keys():
             for offset in offsets.keys():
-                if (':' + offset + ':ipv4:').encode() in data:
-                    data = data.replace((':' + offset + ':ipv4:').encode(), self.ipv4_to_bytes(offsets[offset]))
+                if (':' + offset + ':ip:').encode() in data:
+                    data = data.replace((':' + offset + ':ip:').encode(), self.ip_to_bytes(offsets[offset]))
                 elif (':' + offset + ':port:').encode() in data:
                     data = data.replace((':' + offset + ':port:').encode(), self.port_to_bytes(offsets[offset]))
                 elif (':' + offset + ':').encode() in data:
@@ -219,6 +219,7 @@ class PayloadGenerator:
                     macho_file = open(self.macho_templates[arch], 'rb')
                     macho = macho_file.read()
                     macho_file.close()
+
                     payload_index = macho.index(b'PAYLOAD:')
                     content = macho[:payload_index] + data + macho[payload_index + len(data):]
                     return content
