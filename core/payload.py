@@ -167,8 +167,8 @@ class PayloadGenerator:
                 elif (':' + offset + ':port:').encode() in data:
                     data = data.replace((':' + offset + ':port:').encode(), self.port_to_bytes(offsets[offset]))
                 elif (':' + offset + ':string:').encode() in data:
-                    data = data.replace((':' + offset + ':').encode(), self.string_to_bytes(offsets[offset]))
-                elif (':' + offset + ':').encode() in data or (':' + offset + ':raw:').encode() in data:
+                    data = data.replace((':' + offset + ':string:').encode(), self.string_to_bytes(offsets[offset]))
+                elif (':' + offset + ':').encode() in data:
                     sub = offsets[offset] if type(offsets[offset]) == bytes else codecs.escape_decode(offsets[offset], 'hex')[0]
                     data = data.replace((':' + offset + ':').encode(), sub)
                 else:
