@@ -68,4 +68,4 @@ hatvenom = HatVenom()
 hatvenom.generate_to('macho', 'x64', shellcode, {'string':'//bin/sh'})
 ```
 
-Offsets must be this type `:offset:` or if you want to specify offset type - `:offset:ipv4:`.
+Offsets must be this type `:offset:` or if you want to specify offset type - `:offset:ip:`.
