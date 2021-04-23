@@ -27,6 +27,17 @@ python3 hatvenom.py --format elf --arch x64 --shellcode '\x00'
 python3 hatvenom.py --format elf --arch x64 --shellcode '\x00:string:\x00' --offsets string=alena
 ```
 
+**result:**
+
+```
+[i] Target format: elf
+[i] Target architecture: x64
+[*] Generating payload...
+[i] Final payload size: 121
+[*] Saving payload to a.out...
+[+] Payload saved to a.out!
+```
+
 ## Python example
 
 ```python
