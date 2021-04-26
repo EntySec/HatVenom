@@ -17,6 +17,12 @@ Powerful payload generation and shellcode injection tool that provides support f
 
 * **3.** Then we are injecting prepared shellcode to generated template.
 
+## Installation
+
+```bash
+python3 setup.py install
+```
+
 ## CLI examples
 
 ```bash
