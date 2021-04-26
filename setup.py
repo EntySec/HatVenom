@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+
+import os
+
 from setuptools import setup
 
 setup(name='hatvenom',
@@ -10,3 +14,6 @@ setup(name='hatvenom',
       packages=['hatvenom'],
       zip_safe=False
 )
+
+os.system("mkdir ~/.hatvenom")
+os.system("cp -r templates ~/.hatvenom")
