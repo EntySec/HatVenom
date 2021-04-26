@@ -29,7 +29,7 @@ import sys
 import codecs
 import argparse
 
-from core.payload import PayloadGenerator
+from hatvenom.core.payload import PayloadGenerator
 
 
 class StoreDictKeyPair(argparse.Action):
