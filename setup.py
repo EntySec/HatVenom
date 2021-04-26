@@ -17,5 +17,3 @@ setup(name='hatvenom',
 
 os.system("mkdir ~/.hatvenom")
 os.system("cp -r templates ~/.hatvenom")
-os.system("cp hatvenom.py /usr/local/bin/hatvenom")
-os.system("chmod +x /usr/local/bin/hatvenom")
