@@ -82,8 +82,8 @@ class PayloadGenerator:
     }
 
     macho_templates = {
-        'x64': os.path.expanduser("~/templates/macho_x64.bin"),
-        'aarch64': os.path.expanduser("templates/macho_aarch64.bin")
+        'x64': os.path.expanduser("~/.hatvenom/templates/macho_x64.bin"),
+        'aarch64': os.path.expanduser("~/.hatvenom/templates/macho_aarch64.bin")
     }
 
     elf_headers = {
