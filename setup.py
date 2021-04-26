@@ -13,7 +13,7 @@ setup(name='hatvenom',
       license='MIT',
       packages=['hatvenom'],
       zip_safe=False,
-      scripts=('hatvenom.py',),
+      scripts=('hatvenom',),
       entry_points={}
 )
 
