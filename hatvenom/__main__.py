@@ -45,6 +45,6 @@ class HatVenom(PayloadGenerator):
         with open(filename, 'wb') as f:
             f.write(self.generate_payload(file_format, arch, shellcode, offsets))
 
-if __name__ == '__main__':
+def cli():
     hatvenom = HatVenomCLI()
     hatvenom.start()
