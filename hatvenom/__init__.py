@@ -24,7 +24,6 @@
 # SOFTWARE.
 #
 
-from hatvenom.core.cli import HatVenomCLI
 from hatvenom.core.payload import PayloadGenerator
 
 
@@ -44,7 +43,3 @@ class HatVenom(PayloadGenerator):
     def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out'):
         with open(filename, 'wb') as f:
             f.write(self.generate_payload(file_format, arch, shellcode, offsets))
-
-def cli():
-    hatvenom = HatVenomCLI()
-    hatvenom.start()
