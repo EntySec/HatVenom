@@ -15,7 +15,7 @@ setup(name='hatvenom',
       zip_safe=False,
       entry_points={
         'console_scripts': [
-            'hatvenom = hatvenom:cli'
+            'hatvenom = hatvenom.hatvenom:main'
         ]
     },
 )
