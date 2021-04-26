@@ -13,11 +13,8 @@ setup(name='hatvenom',
       license='MIT',
       packages=['hatvenom'],
       zip_safe=False,
-      entry_points={
-        'console_scripts': [
-            'hatvenom = hatvenom.hatvenom:main'
-        ]
-    },
+      scripts=('hatsploit.py',),
+      entry_points={}
 )
 
 os.system("mkdir ~/.hatvenom")
