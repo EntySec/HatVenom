@@ -12,7 +12,12 @@ setup(name='hatvenom',
       author_email='entysec@gmail.com',
       license='MIT',
       packages=['hatvenom'],
-      zip_safe=False
+      zip_safe=False,
+      entry_points={
+        'console_scripts': [
+            'hatvenom = hatvenom:cli'
+        ]
+    },
 )
 
 os.system("mkdir ~/.hatvenom")
