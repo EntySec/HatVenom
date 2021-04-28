@@ -20,13 +20,11 @@ sudo python3 setup.py install
 
 There are all HatVenom basic functions that can be used to generate payload, covert data or inject shellcode.
 
-```python
-def ip_bytes(self, ip)
-def port_bytes(self, port)
-def string_bytes(self, string)
-def generate(self, file_format, arch, shellcode, offsets={})
-def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out')
-```
+* `ip_bytes(ip)` - Converts IP address to bytes allowed by shellcode.
+* `port_bytes(port)` - Converts numeric port to bytes allowed by shellcode.
+* `string_bytes(string)` - Converts string to bytes allowed by shellcode.
+* `generate(file_format, arch, shellcode, offsets={})` - Generates payload for specified target and with specified shellcode.
+* `generate_to(ile_format, arch, shellcode, offsets={}, filename='a.out')` - Generates payload for specified target and with specified shellcode and saves it to the specified file.
 
 ## Generating payload
 
@@ -70,10 +68,10 @@ Where `message` is an offset name and `string` is an offset type. So the basic u
 There are some possible offsets types:
 
 * `string` - Plain text that will be converted to bytes on the preprocessing stage.
-* `host` - IP address that will be converted to bytes on the preprocessing stage.
+* `ip` - IP address that will be converted to bytes on the preprocessing stage.
 * `port` - Numeric port that will be converted to bytes on the preprocessing stage.
 
-So if you want to replace offset with bytes instead of `string`, `host` and `port`, you can use this type:
+So if you want to replace offset with bytes instead of `string`, `ip` and `port`, you can use this type:
 
 ```shell
 [shellcode]:[name]:[shellcode]
