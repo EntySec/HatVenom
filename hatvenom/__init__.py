@@ -287,24 +287,21 @@ class HatVenomCLI(PayloadGenerator):
             filename = self.args.output if self.args.output else 'a.out'
             shellcode = codecs.escape_decode(self.args.shellcode, 'hex')[0]
 
-            print(f"[i] Target format: {self.args.format}")
-            print(f"[i] Target architecture: {self.args.arch}")
-
-            print("[*] Generating payload...")
+            print("Generating payload...")
             payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
 
             if payload is None:
                 print(f"[-] Invalid format or architecture specified!")
                 sys.exit(1)
 
-            print(f"[i] Final payload size: {str(len(payload))}")
-            print(f"[*] Saving payload to {filename}...")
+            print(f"Final payload size: {str(len(payload))}")
+            print(f"Saving payload to {filename}...")
             with open(filename, 'wb') as f:
                 f.write(payload)
             print(f"[+] Payload saved to {filename}!")
             sys.exit(0)
         else:
-            print("[-] No format, architecture and shellcode specified!")
+            print("No format, architecture and shellcode specified!")
 
-        print("[-] Failed to generate payload!")
+        print("Failed to generate payload!")
         sys.exit(1)
