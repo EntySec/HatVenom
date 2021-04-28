@@ -41,7 +41,7 @@ hatvenom = HatVenom()
 hatvenom.generate_to('elf', 'x64', shellcode)
 ```
 
-## Generating payload with offsets
+## Payload offsets
 
 Payload offsets is a variables used to add something to shelcode on the preprocessing stage. Offsets looks like this:
 
