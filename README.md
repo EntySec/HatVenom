@@ -16,6 +16,18 @@ cd HatVenom
 sudo python3 setup.py install
 ```
 
+## Basic functions
+
+There are all HatVenom basic functions that can be used to generate payload, covert data or inject shellcode.
+
+```python
+def ip_bytes(self, ip)
+def port_bytes(self, port)
+def string_bytes(self, string)
+def generate(self, file_format, arch, shellcode, offsets={})
+def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out')
+```
+
 ## Generating payload
 
 It's very easy to generate payload for various targets in HatVenom. Let's generate simple payload that calls shutdown for Linux and save it to `a.out`.
