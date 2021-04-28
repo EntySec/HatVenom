@@ -28,8 +28,9 @@ import os
 import sys
 import codecs
 import argparse
+import codecs
 
-from hatvenom.core.payload import PayloadGenerator
+
 
 
 class HatVenom(PayloadGenerator):
