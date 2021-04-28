@@ -28,7 +28,7 @@ import os
 import sys
 import codecs
 import argparse
-import codecs
+import struct
 
 
 class PayloadGenerator:
