@@ -10,7 +10,7 @@ Powerful payload generation and shellcode injection tool that provides support f
 
 ## Installation
 
-```bash
+```shell
 git clone https://github.com/EntySec/HatVenom.git
 cd HatVenom
 sudo python3 setup.py install
@@ -45,13 +45,13 @@ hatvenom.generate_to('elf', 'x64', shellcode)
 
 Payload offsets is a variables used to add something to shelcode on the preprocessing stage. Offsets looks like this:
 
-```bash
+```shell
 \x90\x90\x90\x90:message:string:\x90\x90\x90\x90
 ```
 
 Where `message` is an offset name and `string` is an offset type. So the basic usage of the offset looks like:
 
-```bash
+```shell
 [shellcode]:[name]:[type]:[shellcode]
 ```
 
@@ -63,7 +63,7 @@ There are some possible offsets types:
 
 So if you want to replace offset with bytes instead of `string`, `host` and `port`, you can use this type:
 
-```bash
+```shell
 [shellcode]:[name]:[shellcode]
 ```
 
