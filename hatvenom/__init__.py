@@ -298,10 +298,10 @@ class HatVenomCLI(PayloadGenerator):
             print(f"Saving payload to {filename}...")
             with open(filename, 'wb') as f:
                 f.write(payload)
-            print(f"[+] Payload saved to {filename}!")
+            print(f"Payload saved to {filename}")
             sys.exit(0)
         else:
-            print("No format, architecture and shellcode specified!")
+            print("No format, architecture and shellcode specified.")
 
-        print("Failed to generate payload!")
+        print("Failed to generate payload.")
         sys.exit(1)
