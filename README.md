@@ -41,3 +41,13 @@ So if you want to replace offset with bytes instead of `string`, `host` and `por
 ```
 [shellcode]:[name]:[shellcode]
 ```
+
+## Examples
+
+```python
+from hatvenom import HatVenom
+
+shellcode = (
+    b""
+)
+```
