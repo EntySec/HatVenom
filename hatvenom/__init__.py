@@ -288,7 +288,7 @@ class HatVenomCLI(PayloadGenerator):
             shellcode = codecs.escape_decode(self.args.shellcode, 'hex')[0]
 
             print("Generating payload...")
-            payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets, filename)
+            payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
 
             if payload is None:
                 print(f"[-] Invalid format or architecture specified!")
