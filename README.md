@@ -94,7 +94,7 @@ shellcode = (
 )
 
 hatvenom = HatVenom()
-hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//usr/bin/whoami'})
+hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//bin/ps'})
 ```
 
 ## HatVenom CLI
