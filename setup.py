@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(name='hatvenom',
       version='1.0',
-      description='Hatvenom',
+      description='HatVenom',
       url='http://github.com/EntySec/HatVenom',
       author='EntySec',
       author_email='entysec@gmail.com',
