@@ -11,7 +11,7 @@ HatSploit native powerful payload generation and shellcode injection tool that p
 ## Installation
 
 ```shell
-pip3 install git+https://github.com/enty8080/HatVenom
+pip3 install git+https://github.com/EntySec/HatVenom
 ```
 
 ## Basic functions
