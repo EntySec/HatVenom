@@ -1,3 +1,5 @@
+from .generator import PayloadGenerator
+
 class HatVenom(PayloadGenerator):
     def ip_bytes(self, ip):
         return self.ip_to_bytes(ip)
