@@ -30,6 +30,7 @@ import argparse
 
 from .generator import PayloadGenerator
 
+
 class StoreDictKeyPair(argparse.Action):
      def __call__(self, parser, namespace, values, option_string=None):
          my_dict = {}
