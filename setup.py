@@ -26,7 +26,7 @@
 
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='hatvenom',
       version='1.0',
@@ -35,7 +35,7 @@ setup(name='hatvenom',
       author='EntySec',
       author_email='entysec@gmail.com',
       license='MIT',
-      packages=['hatvenom'],
+      packages=find_packages(),
       entry_points={
           "console_scripts": ["hatvenom=hatvenom.cli:main"]
       },
