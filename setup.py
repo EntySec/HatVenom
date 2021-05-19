@@ -36,6 +36,9 @@ setup(name='hatvenom',
       author_email='entysec@gmail.com',
       license='MIT',
       packages=['hatvenom'],
+      entry_points={
+            "console_scripts": ["hatvenom=hatvenom.cli:main"]
+      },
       zip_safe=False
 )
 
