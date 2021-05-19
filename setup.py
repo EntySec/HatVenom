@@ -39,6 +39,7 @@ setup(name='hatvenom',
       entry_points={
           "console_scripts": ["hatvenom=hatvenom.cli:main"]
       },
+      scripts=['hatvenom/cli.py']
       zip_safe=False
 )
 
