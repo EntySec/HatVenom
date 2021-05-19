@@ -81,3 +81,7 @@ class HatVenomCLI(PayloadGenerator):
 
         print("Failed to generate payload.")
         sys.exit(1)
+
+def main():
+    cli = HatVenomCLI()
+    cli.start()
