@@ -27,6 +27,7 @@
 import sys
 import codecs
 import argparse
+import click
 
 from .generator import PayloadGenerator
 
