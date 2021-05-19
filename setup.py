@@ -37,7 +37,7 @@ setup(name='hatvenom',
       license='MIT',
       packages=['hatvenom'],
       entry_points={
-            "console_scripts": ["hatvenom=hatvenom.cli:main"]
+          "console_scripts": ["hatvenom=hatvenom.cli:main"]
       },
       zip_safe=False
 )
