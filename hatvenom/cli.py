@@ -29,6 +29,7 @@ import codecs
 import argparse
 
 from .generator import PayloadGenerator
+from .badges import Badges
 
 
 class StoreDictKeyPair(argparse.Action):
@@ -40,7 +41,7 @@ class StoreDictKeyPair(argparse.Action):
         setattr(namespace, self.dest, my_dict)
 
 
-class HatVenomCLI(PayloadGenerator):
+class HatVenomCLI(PayloadGenerator, Badges):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--format', dest='format', help='Platform to generate for.')
@@ -63,23 +64,23 @@ class HatVenomCLI(PayloadGenerator):
             filename = self.args.output if self.args.output else 'a.out'
             shellcode = codecs.escape_decode(self.args.shellcode, 'hex')[0]
 
-            print("Generating payload...")
+            self.print_process("Generating payload...")
             payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
 
             if payload is None:
-                print(f"[-] Invalid format or architecture specified!")
+                self.print_error(f"[-] Invalid format or architecture specified!")
                 sys.exit(1)
 
-            print(f"Final payload size: {str(len(payload))}")
-            print(f"Saving payload to {filename}...")
+            self.print_information(f"Final payload size: {str(len(payload))}")
+            self.print_process(f"Saving payload to {filename}...")
             with open(filename, 'wb') as f:
                 f.write(payload)
-            print(f"Payload saved to {filename}")
+            self.print_success(f"Payload saved to {filename}")
             sys.exit(0)
         else:
-            print("No format, architecture and shellcode specified.")
+            self.print_error("No format, architecture and shellcode specified.")
 
-        print("Failed to generate payload.")
+        self.print_error("Failed to generate payload.")
         sys.exit(1)
 
 def main():
