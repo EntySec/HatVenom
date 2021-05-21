@@ -73,14 +73,16 @@ class HatVenomCLI(PayloadGenerator, Badges):
 
             self.print_information(f"Final payload size: {str(len(payload))}")
             self.print_process(f"Saving payload to {filename}...")
+
             with open(filename, 'wb') as f:
                 f.write(payload)
-            self.print_success(f"Payload saved to {filename}")
+
+            self.print_success(f"Payload saved to {filename}!")
             sys.exit(0)
         else:
-            self.print_error("No format, architecture and shellcode specified.")
+            self.print_error("No format, architecture and shellcode specified!")
 
-        self.print_error("Failed to generate payload.")
+        self.print_error("Failed to generate payload!")
         sys.exit(1)
 
 def main():
