@@ -99,7 +99,7 @@ hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//bin/ps'})
 
 HatVenom also has their own command line interface that can be invoked by executing `hatvenom` command:
 
-```shell
+```
 usage: hatvenom [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE] [--offsets OFFSETS] [-o OUTPUT] [-l]
 
 Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
