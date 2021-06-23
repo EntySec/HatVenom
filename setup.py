@@ -24,8 +24,6 @@
 # SOFTWARE.
 #
 
-import os
-
 from setuptools import setup, find_packages
 
 setup(name='hatvenom',
@@ -37,6 +35,7 @@ setup(name='hatvenom',
       license='MIT',
       python_requires='>=3.7.0',
       packages=find_packages(),
+      include_package_data=True,
       entry_points={
           "console_scripts": [
                 "hatvenom = hatvenom.cli:main"
@@ -49,6 +48,3 @@ setup(name='hatvenom',
       ],
       zip_safe=False
 )
-
-os.system("mkdir ~/.hatvenom")
-os.system("cp -r templates ~/.hatvenom")
