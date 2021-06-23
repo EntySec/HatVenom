@@ -26,7 +26,7 @@ There are all HatVenom basic functions that can be used to generate payload, cov
 
 ## Generating payload
 
-It's very easy to generate payload for various targets in HatVenom. Let's generate simple payload that calls shutdown for Linux and save it to `a.out`.
+It's very easy to generate payload for various targets in HatVenom. Let's generate a simple payload that calls shutdown for Linux and save it to `a.out`.
 
 ### Examples
 
@@ -51,7 +51,7 @@ hatvenom.generate_to('elf', 'x64', shellcode)
 
 ## Payload offsets
 
-Payload offsets is a variables used to add something to shelcode on the preprocessing stage. Offsets looks like this:
+Payload offsets is a variables used to add something to a shelcode on the preprocessing stage. Offsets looks like this:
 
 ```shell
 \x90\x90\x90\x90:message:string:\x90\x90\x90\x90
@@ -77,7 +77,7 @@ So if you want to replace offset with bytes instead of `string`, `ip` and `port`
 
 ### Examples
 
-Let's generate simple payload that executes provided through `file` offset file for macOS and save it to `a.out`.
+Let's generate a simple payload that executes provided through `file` offset file for macOS and save it to `a.out`.
 
 ```python
 from hatvenom import HatVenom
@@ -100,9 +100,11 @@ hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//bin/ps'})
 HatVenom also has their own command line interface that can be invoked by executing `hatvenom` command:
 
 ```
-usage: hatvenom [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE] [--offsets OFFSETS] [-o OUTPUT] [-l]
+usage: hatvenom [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE]
+                [--offsets OFFSETS] [-o OUTPUT] [-l]
 
-Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
+Powerful payload generation and shellcode injection tool that provides support
+for common platforms and architectures.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -118,19 +120,10 @@ optional arguments:
 
 ### Examples
 
-Let's generate simple payload that kills all processes for Linux and save it to `a.out`.
+Let's generate a simple payload that kills all processes for Linux and save it to `a.out`.
 
 ```shell
 hatvenom --format elf --arch x64 --shellcode "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
-```
-
-**output:**
-
-```shell
-[*] Generating payload...
-[i] Final payload size: 131
-[*] Saving payload to a.out...
-[+] Payload saved to a.out!
 ```
 
 **NOTE:** If you want to use offsets in the CLI version of HatVenom, then you should use `--offsets one=1,two=2`
