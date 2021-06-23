@@ -32,6 +32,8 @@ import struct
 
 
 class PayloadGenerator:
+    templates = f'{os.path.dirname(__file__)}/templates/'
+
     pe_headers = {
         'x86': (
             b'\x4d\x5a\x90\x00\x03\x00\x00\x00\x04\x00\x00\x00\xff\xff\x00\x00\xb8\x00\x00\x00\x00\x00\x00\x00'
@@ -84,8 +86,8 @@ class PayloadGenerator:
     }
 
     macho_templates = {
-        'x64': os.path.expanduser("~/.hatvenom/templates/macho_x64.bin"),
-        'aarch64': os.path.expanduser("~/.hatvenom/templates/macho_aarch64.bin")
+        'x64': templates + 'macho_x64.bin'
+        'aarch64': templates + 'macho_aarch64.bin'
     }
 
     elf_headers = {
