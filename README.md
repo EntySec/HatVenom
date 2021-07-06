@@ -5,7 +5,7 @@
     </a>
     <a href="https://github.com/EntySec/RomBuster">
         <img src="https://img.shields.io/badge/EntySec-%20RomBuster-3572a5.svg">
-    </a>
+    </a><br>
 
 HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
 
