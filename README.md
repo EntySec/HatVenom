@@ -7,6 +7,9 @@
     <a href="https://github.com/EntySec/HatVenom">
         <img src="https://img.shields.io/badge/language-Python-3572a5.svg">
     </a>
+    <a href="https://github.com/EntySec/HatVenom">
+        <img src="https://img.shields.io/github/stars/entysec/hatvenom">
+    </a>
 </p>
 
 HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
