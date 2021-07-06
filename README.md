@@ -2,9 +2,9 @@
 
 <p>
     <a href="https://twitter.com/EntySec">
-        <img src="https://img.shields.io/badge/twitter-EntySec-3572a5.svg">
+        <img src="https://img.shields.io/badge/developer-EntySec-3572a5.svg">
     </a>
-    <a href="https://github.com/EntySec/RomBuster">
+    <a href="https://github.com/EntySec/HatVenom">
         <img src="https://img.shields.io/badge/language-Python-3572a5.svg">
     </a>
 </p>
