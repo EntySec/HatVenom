@@ -53,6 +53,12 @@ class HatVenomCLI(PayloadGenerator, Badges):
     args = parser.parse_args()
 
     def start(self):
+        if self.args.output:
+            directory = os.path.split(self.args.output)[0]
+            if not os.path.isdir(directory):
+                self.print_error(f"Directory: {directory}: does not exist!")
+                return
+
         if self.args.list:
             formats = ""
             print(formats)
@@ -68,7 +74,7 @@ class HatVenomCLI(PayloadGenerator, Badges):
             payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
 
             if payload is None:
-                self.print_error(f"[-] Invalid format or architecture specified!")
+                self.print_error(f"Invalid format or architecture specified!")
                 sys.exit(1)
 
             self.print_information(f"Final payload size: {str(len(payload))}")
@@ -78,12 +84,8 @@ class HatVenomCLI(PayloadGenerator, Badges):
                 f.write(payload)
 
             self.print_success(f"Payload saved to {filename}!")
-            sys.exit(0)
         else:
-            self.print_error("No format, architecture and shellcode specified!")
-
-        self.print_error("Failed to generate payload!")
-        sys.exit(1)
+            self.parser.print_help()
 
 def main():
     cli = HatVenomCLI()
