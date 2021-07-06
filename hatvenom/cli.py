@@ -44,9 +44,9 @@ class StoreDictKeyPair(argparse.Action):
 class HatVenomCLI(PayloadGenerator, Badges):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('--format', dest='format', help='Platform to generate for.')
-    parser.add_argument('--arch', dest='arch', help='Architecture to generate for.')
-    parser.add_argument('--shellcode', dest='shellcode', help='Shellcode to inject.')
+    parser.add_argument('-f', '--format', dest='format', help='Platform to generate for.')
+    parser.add_argument('-a', '--arch', dest='arch', help='Architecture to generate for.')
+    parser.add_argument('-s', '--shellcode', dest='shellcode', help='Shellcode to inject.')
     parser.add_argument('--offsets', dest='offsets', help='Shellcode offsets.', action=StoreDictKeyPair)
     parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
     parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
