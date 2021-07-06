@@ -1,8 +1,12 @@
 # HatVenom
 
 <p>
-<a href="https://twitter.com/EntySec"><img src="https://img.shields.io/badge/twitter-EntySec-3572a5.svg"></a>
-<a href="https://github.com/EntySec/RomBuster"><img src="https://img.shields.io/badge/language-%20Python-3572a5.svg"></a>
+    <a href="https://twitter.com/EntySec">
+        <img src="https://img.shields.io/badge/twitter-EntySec-3572a5.svg">
+    </a>
+    <a href="https://github.com/EntySec/RomBuster">
+        <img src="https://img.shields.io/badge/language-%20Python-3572a5.svg">
+    </a>
 </p>
 
 HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
