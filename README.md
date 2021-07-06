@@ -8,7 +8,7 @@
         <img src="https://img.shields.io/badge/language-Python-3572a5.svg">
     </a>
     <a href="https://github.com/EntySec/HatVenom/stargazers">
-        <img src="https://img.shields.io/github/stars/entysec/hatvenom?color=orange">
+        <img src="https://img.shields.io/github/stars/entysec/hatvenom?color=yellow">
     </a>
 </p>
 
