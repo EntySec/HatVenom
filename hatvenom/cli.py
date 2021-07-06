@@ -62,7 +62,6 @@ class HatVenomCLI(PayloadGenerator, Badges):
         if self.args.list:
             formats = ""
             print(formats)
-            sys.exit(0)
 
         if self.args.format and self.args.arch and self.args.shellcode:
             offsets = dict() if not self.args.offsets else self.args.offsets
@@ -88,5 +87,8 @@ class HatVenomCLI(PayloadGenerator, Badges):
             self.parser.print_help()
 
 def main():
-    cli = HatVenomCLI()
-    cli.start()
+    try:
+        cli = HatVenomCLI()
+        cli.start()
+    except Exception:
+        pass
