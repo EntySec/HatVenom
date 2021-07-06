@@ -1,7 +1,7 @@
 # HatVenom
 
 <p>
-    <a href="https://twitter.com/EntySec">
+    <a href="https://entysec.netlify.app">
         <img src="https://img.shields.io/badge/developer-EntySec-3572a5.svg">
     </a>
     <a href="https://github.com/EntySec/HatVenom">
