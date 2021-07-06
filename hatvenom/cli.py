@@ -74,7 +74,7 @@ class HatVenomCLI(PayloadGenerator, Badges):
 
             if payload is None:
                 self.print_error(f"Invalid format or architecture specified!")
-                sys.exit(1)
+                return
 
             self.print_information(f"Final payload size: {str(len(payload))}")
             self.print_process(f"Saving payload to {filename}...")
