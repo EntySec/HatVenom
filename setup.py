@@ -27,7 +27,7 @@
 from setuptools import setup, find_packages
 
 setup(name='hatvenom',
-      version='1.0',
+      version='1.0.0',
       description='HatVenom',
       url='http://github.com/EntySec/HatVenom',
       author='EntySec',
