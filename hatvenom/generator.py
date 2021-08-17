@@ -231,9 +231,15 @@ class PayloadGenerator:
                     content = macho[:payload_index] + data + macho[payload_index + len(data):]
                     return content
         return None
+    
+    def generate_raw(self, arch, data):
+        if arch in ['generic']:
+            return data
+        return None
 
     formats = {
         'pe': generate_pe,
         'elf': generate_elf,
-        'macho': generate_macho
+        'macho': generate_macho,
+        'raw': generate_raw
     }
