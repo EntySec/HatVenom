@@ -26,7 +26,7 @@
 
 
 class PE:
-    pe_headers = {
+    headers = {
         'x86': (
             b'\x4d\x5a\x90\x00\x03\x00\x00\x00\x04\x00\x00\x00\xff\xff\x00\x00\xb8\x00\x00\x00\x00\x00\x00\x00'
             b'\x40\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
@@ -77,9 +77,9 @@ class PE:
         )
     }
 
-    def generate_pe(self, arch, data):
-        if arch in self.pe_headers.keys():
-            pe = self.pe_headers[arch] + data
+    def generate(self, arch, data):
+        if arch in self.headers.keys():
+            pe = self.headers[arch] + data
             if arch in ['x86']:
                 pe += b'\xFF' * 4 + b'\x00' * 4 + b'\xFF' * 4
                 content = pe.ljust(1536, b'\x00')
