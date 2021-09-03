@@ -25,5 +25,5 @@
 #
 
 
-class Elf:
+class ELF:
     pass
