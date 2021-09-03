@@ -80,3 +80,28 @@ class ELF:
             b"\x00\x10\x00\x00\x00\x00\x00\x00"
         )
     }
+
+    def generate_elf(self, arch, data):
+        if arch in self.elf_headers.keys():
+            elf = self.elf_headers[arch] + data
+            if elf[4] == 1:
+                if arch.endswith("be"):
+                    p_filesz = struct.pack(">L", len(elf))
+                    p_memsz = struct.pack(">L", len(elf) + len(data))
+                else:
+                    p_filesz = struct.pack("<L", len(elf))
+                    p_memsz = struct.pack("<L", len(elf) + len(data))
+                content = elf[:0x44] + p_filesz + p_memsz + elf[0x4c:]
+            elif elf[4] == 2:
+                if arch.endswith("be"):
+                    p_filesz = struct.pack(">Q", len(elf))
+                    p_memsz = struct.pack(">Q", len(elf) + len(data))
+                else:
+                    p_filesz = struct.pack("<Q", len(elf))
+                    p_memsz = struct.pack("<Q", len(elf) + len(data))
+
+                content = elf[:0x60] + p_filesz + p_memsz + elf[0x70:]
+            else:
+                content = b''
+            return content
+        return b''
