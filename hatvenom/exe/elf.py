@@ -26,7 +26,7 @@
 
 
 class ELF:
-    elf_headers = {
+    headers = {
         'armle': (
             b"\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00"
             b"\x02\x00\x28\x00\x01\x00\x00\x00\x54\x80\x00\x00\x34\x00\x00\x00"
@@ -82,8 +82,8 @@ class ELF:
     }
 
     def generate(self, arch, data):
-        if arch in self.elf_headers.keys():
-            elf = self.elf_headers[arch] + data
+        if arch in self.headers.keys():
+            elf = self.headers[arch] + data
             if elf[4] == 1:
                 if arch.endswith("be"):
                     p_filesz = struct.pack(">L", len(elf))
