@@ -81,7 +81,7 @@ class ELF:
         )
     }
 
-    def generate_elf(self, arch, data):
+    def generate(self, arch, data):
         if arch in self.elf_headers.keys():
             elf = self.elf_headers[arch] + data
             if elf[4] == 1:
