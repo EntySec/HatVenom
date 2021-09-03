@@ -26,4 +26,7 @@
 
 
 class Raw:
-    pass
+    def generate(self, arch, data):
+        if arch in ['generic']:
+            return data
+        return None
