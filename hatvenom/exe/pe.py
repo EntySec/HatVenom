@@ -76,3 +76,17 @@ class PE:
             b'\x00\x00\x00\x00\x00\x00\x00\x00'
         )
     }
+
+    def generate_pe(self, arch, data):
+        if arch in self.pe_headers.keys():
+            pe = self.pe_headers[arch] + data
+            if arch in ['x86']:
+                pe += b'\xFF' * 4 + b'\x00' * 4 + b'\xFF' * 4
+                content = pe.ljust(1536, b'\x00')
+            elif arch in ['x64']:
+                pe += b'\x00' * 7 + b'\xFF' * 8 + b'\x00' * 8 + b'\xFF' * 8
+                content = pe.ljust(2048, b'\x00')
+            else:
+                content = b''
+            return content
+        return b''
