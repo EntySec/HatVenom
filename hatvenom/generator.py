@@ -24,6 +24,10 @@
 # SOFTWARE.
 #
 
+import socket
+import struct
+import codecs
+
 from .exe.pe import PE
 from .exe.raw import Raw
 from .exe.elf import ELF
