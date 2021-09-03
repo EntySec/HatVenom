@@ -26,4 +26,20 @@
 
 
 class Macho:
-    pass
+    headers = {
+        'x64': f'{os.path.dirname(__file__)}/templates/macho_x64.bin',
+        'aarch64': f'{os.path.dirname(__file__)}/templates/macho_aarch64.bin'
+    }
+
+    def generate(self, arch, data):
+        if arch in self.headers.keys():
+            if os.path.exists(self.headers[arch]):
+                if len(data) >= len('PAYLOAD:'):
+                    macho_file = open(self.headers[arch], 'rb')
+                    macho = macho_file.read()
+                    macho_file.close()
+
+                    payload_index = macho.index(b'PAYLOAD:')
+                    content = macho[:payload_index] + data + macho[payload_index + len(data):]
+                    return content
+        return b''
