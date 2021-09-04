@@ -24,6 +24,8 @@
 # SOFTWARE.
 #
 
+import struct
+
 
 class ELF:
     headers = {
