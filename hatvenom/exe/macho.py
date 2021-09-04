@@ -43,4 +43,4 @@ class Macho:
                     payload_index = macho.index(b'PAYLOAD:')
                     content = macho[:payload_index] + data + macho[payload_index + len('PAYLOAD:'):]
                     return content
-        return b''
+        return b'\x00'
