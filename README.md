@@ -110,7 +110,7 @@ HatVenom also has their own command line interface that can be invoked by execut
 
 ```
 usage: hatvenom [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE]
-                [--offsets OFFSETS] [-o OUTPUT] [-l]
+                [--offsets OFFSETS] [-o OUTPUT]
 
 Powerful payload generation and shellcode injection tool that provides support
 for common platforms and architectures.
@@ -124,7 +124,6 @@ optional arguments:
   --offsets OFFSETS     Shellcode offsets.
   -o OUTPUT, --output OUTPUT
                         File to output generated payload.
-  -l, --list            List all formats and platforms.
 ```
 
 ### Examples
