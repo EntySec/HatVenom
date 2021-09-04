@@ -49,7 +49,6 @@ class HatVenomCLI(Generator, Badges):
     parser.add_argument('-s', '--shellcode', dest='shellcode', help='Shellcode to inject.')
     parser.add_argument('--offsets', dest='offsets', help='Shellcode offsets.', action=StoreDictKeyPair)
     parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
-    parser.add_argument('-l', '--list', action="store_true", help='List all formats and platforms.')
     args = parser.parse_args()
 
     def start(self):
@@ -58,10 +57,6 @@ class HatVenomCLI(Generator, Badges):
             if not os.path.isdir(directory):
                 self.print_error(f"Directory: {directory}: does not exist!")
                 return
-
-        if self.args.list:
-            formats = ""
-            print(formats)
 
         if self.args.format and self.args.arch and self.args.shellcode:
             offsets = dict() if not self.args.offsets else self.args.offsets
