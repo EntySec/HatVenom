@@ -24,6 +24,8 @@
 # SOFTWARE.
 #
 
+import os
+
 
 class Macho:
     headers = {
@@ -39,6 +41,6 @@ class Macho:
                     macho_file.close()
 
                     payload_index = macho.index(b'PAYLOAD:')
-                    content = macho[:payload_index] + data + macho[payload_index + len(data):]
+                    content = macho[:payload_index] + data + macho[payload_index + len('PAYLOAD:'):]
                     return content
         return b''
