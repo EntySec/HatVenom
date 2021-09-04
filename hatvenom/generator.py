@@ -49,7 +49,7 @@ class Generator:
                     data = data.replace((':' + offset + ':').encode(), sub)
                 else:
                     return b''
-            return self.formats[file_format].generate(self, arch, data)
+            return self.formats[file_format].generate(arch, data)
         return b''
 
     formats = {
