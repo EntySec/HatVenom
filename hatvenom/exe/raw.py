@@ -24,13 +24,9 @@
 # SOFTWARE.
 #
 
-from .generator import Generator
 
-
-class HatVenom(Generator):
-    def generate(self, file_format, arch, shellcode, offsets={}):
-        return self.generate_payload(file_format, arch, shellcode, offsets)
-
-    def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out'):
-        with open(filename, 'wb') as f:
-            f.write(self.generate_payload(file_format, arch, shellcode, offsets))
+class Raw:
+    def generate(self, arch, data):
+        if arch in ['generic']:
+            return data
+        return None

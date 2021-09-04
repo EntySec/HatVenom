@@ -24,13 +24,23 @@
 # SOFTWARE.
 #
 
-from .generator import Generator
+import os
 
 
-class HatVenom(Generator):
-    def generate(self, file_format, arch, shellcode, offsets={}):
-        return self.generate_payload(file_format, arch, shellcode, offsets)
+class Macho:
+    headers = {
+        'x64': f'{os.path.dirname(__file__)}/../templates/macho_x64.bin',
+    }
 
-    def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out'):
-        with open(filename, 'wb') as f:
-            f.write(self.generate_payload(file_format, arch, shellcode, offsets))
+    def generate(self, arch, data):
+        if arch in self.headers.keys():
+            if os.path.exists(self.headers[arch]):
+                if len(data) >= len('PAYLOAD:'):
+                    macho_file = open(self.headers[arch], 'rb')
+                    macho = macho_file.read()
+                    macho_file.close()
+
+                    payload_index = macho.index(b'PAYLOAD:')
+                    content = macho[:payload_index] + data + macho[payload_index + len(data):]
+                    return content
+        return b''

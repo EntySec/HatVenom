@@ -28,7 +28,7 @@ import sys
 import codecs
 import argparse
 
-from .generator import PayloadGenerator
+from .generator import Generator
 from .badges import Badges
 
 
@@ -41,7 +41,7 @@ class StoreDictKeyPair(argparse.Action):
         setattr(namespace, self.dest, my_dict)
 
 
-class HatVenomCLI(PayloadGenerator, Badges):
+class HatVenomCLI(Generator, Badges):
     description = "Powerful payload generation and shellcode injection tool that provides support for common platforms and architectures."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-f', '--format', dest='format', help='Platform to generate for.')
