@@ -35,7 +35,7 @@ from .exe.macho import Macho
 
 
 class Generator:
-    def generate(self, file_format, arch, data, offsets={}):
+    def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.formats.keys():
             for offset in offsets.keys():
                 if (':' + offset + ':ip:').encode() in data:
