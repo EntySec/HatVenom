@@ -44,7 +44,7 @@ class StoreDictKeyPair(argparse.Action):
 class HatVenomCLI(Generator, Badges):
     description = (
         "HatVenom is a HatSploit native powerful payload generation and shellcode injection tool"
-        "that provides support for common platforms and architectures."
+        " that provides support for common platforms and architectures."
     )
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('-f', '--format', dest='format', help='Platform to generate for.')
