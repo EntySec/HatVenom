@@ -109,17 +109,18 @@ hatvenom.generate_to('macho', 'x64', shellcode, {'file':'//bin/ps'})
 HatVenom also has their own command line interface that can be invoked by executing `hatvenom` command:
 
 ```
-usage: hatvenom [-h] [--format FORMAT] [--arch ARCH] [--shellcode SHELLCODE]
-                [--offsets OFFSETS] [-o OUTPUT]
+usage: hatvenom [-h] [-f FORMAT] [-a ARCH] [-s SHELLCODE] [--offsets OFFSETS]
+                [-o OUTPUT]
 
-Powerful payload generation and shellcode injection tool that provides support
-for common platforms and architectures.
+HatVenom is a HatSploit native powerful payload generation and shellcode
+injection tool that provides support for common platforms and architectures.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --format FORMAT       Platform to generate for.
-  --arch ARCH           Architecture to generate for.
-  --shellcode SHELLCODE
+  -f FORMAT, --format FORMAT
+                        Platform to generate for.
+  -a ARCH, --arch ARCH  Architecture to generate for.
+  -s SHELLCODE, --shellcode SHELLCODE
                         Shellcode to inject.
   --offsets OFFSETS     Shellcode offsets.
   -o OUTPUT, --output OUTPUT
