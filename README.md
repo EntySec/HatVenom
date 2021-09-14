@@ -12,7 +12,7 @@
     </a>
 </p>
 
-HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
+HatVenom is a HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
 
 ## Features
 
