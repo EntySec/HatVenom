@@ -41,5 +41,8 @@ setup(name='hatvenom',
                 "hatvenom = hatvenom.cli:main"
           ]
       },
+      install_requires=[
+          'hatsploit @ git+https://github.com/EntySec/HatSploit'
+      ],
       zip_safe=False
 )
