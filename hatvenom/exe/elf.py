@@ -28,6 +28,8 @@ import struct
 
 
 class ELF:
+    magic_number = b"\x7f\x45\x4c\x46"
+
     headers = {
         'armle': (
             b"\x7f\x45\x4c\x46\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00"
@@ -84,6 +86,9 @@ class ELF:
     }
 
     def generate(self, arch, data):
+        if data[:4] == magic_number:
+            return data
+
         if arch in self.headers.keys():
             elf = self.headers[arch] + data
             if elf[4] == 1:
