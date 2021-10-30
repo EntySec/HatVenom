@@ -28,7 +28,9 @@ import struct
 
 
 class ELF:
-    magic = [b"\x7f\x45\x4c\x46"]
+    magic = [
+        b"\x7f\x45\x4c\x46"
+    ]
 
     headers = {
         'armle': (
@@ -86,7 +88,7 @@ class ELF:
     }
 
     def generate(self, arch, data):
-        if data[:4] in magic:
+        if data[:4] in self.magic:
             return data
 
         if arch in self.headers.keys():
