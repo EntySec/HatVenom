@@ -28,11 +28,22 @@ import os
 
 
 class Macho:
+    magic = [
+        b"\xca\xfe\xba\xbe",
+        b"\xfe\xed\xfa\xce",
+        b"\xfe\xed\xfa\xcf",
+        b"\xce\xfa\xed\xfe",
+        b"\xcf\xfa\xed\xfe"
+    ]
+
     headers = {
         'x64': f'{os.path.dirname(__file__)}/../templates/macho_x64.bin',
     }
 
     def generate(self, arch, data):
+        if data[:4] in self.magic:
+            return data
+
         if arch in self.headers.keys():
             if os.path.exists(self.headers[arch]):
                 if len(data) >= len('PAYLOAD:'):
