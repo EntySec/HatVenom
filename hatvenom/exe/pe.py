@@ -26,6 +26,10 @@
 
 
 class PE:
+    magic = [
+        b"\x4d\x5a"
+    ]
+
     headers = {
         'x86': (
             b'\x4d\x5a\x90\x00\x03\x00\x00\x00\x04\x00\x00\x00\xff\xff\x00\x00\xb8\x00\x00\x00\x00\x00\x00\x00'
@@ -78,6 +82,9 @@ class PE:
     }
 
     def generate(self, arch, data):
+        if data[:2] in self.magic:
+            return data
+
         if arch in self.headers.keys():
             pe = self.headers[arch] + data
             if arch in ['x86']:
