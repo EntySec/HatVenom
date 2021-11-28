@@ -28,15 +28,13 @@ import socket
 import struct
 import codecs
 
-from .exe.pe import PE
-from .exe.raw import Raw
-from .exe.elf import ELF
-from .exe.macho import Macho
+from .exe import EXE
+from .encode import Encode
 
 
-class Generator:
+class Generator(EXE, Encode):
     def generate_payload(self, file_format, arch, data, offsets={}):
-        if file_format in self.formats.keys():
+        if file_format in self.exe_formats.keys():
             for offset in offsets.keys():
                 if (':' + offset + ':ip:').encode() in data:
                     data = data.replace((':' + offset + ':ip:').encode(), socket.inet_aton(offsets[offset]))
@@ -49,12 +47,5 @@ class Generator:
                     data = data.replace((':' + offset + ':').encode(), sub)
                 else:
                     return b''
-            return self.formats[file_format].generate(arch, data)
+            return self.exe_formats[file_format].generate(arch, data)
         return b''
-
-    formats = {
-        'pe': PE(),
-        'raw': Raw(),
-        'elf': ELF(),
-        'macho': Macho()
-    }
