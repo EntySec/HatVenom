@@ -23,3 +23,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
+
+from .xor import XOR
+
+
+class Encode:
+    encode_formats = {
+        'xor': XOR()
+    }
