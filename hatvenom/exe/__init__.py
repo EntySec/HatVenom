@@ -23,3 +23,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
+
+from .pe import PE
+from .raw import Raw
+from .elf import ELF
+from .macho import Macho
+
+
+class EXE:
+    exe_formats = {
+        'pe': PE(),
+        'raw': Raw(),
+        'elf': ELF(),
+        'macho': Macho()
+    }
