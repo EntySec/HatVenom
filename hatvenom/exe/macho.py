@@ -38,7 +38,7 @@ class Macho:
 
     headers = {
         'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho_x64.bin',
-        'aarch64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho_x64.bin'
+        'aarch64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho_aarch64.bin'
     }
 
     def generate(self, arch, data):
