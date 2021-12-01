@@ -25,7 +25,7 @@
 #
 
 
-class Xor:
+class XOR:
     def encode(self, shellcode, decode=False):
         shellcode = bytearray(shellcode)
 
