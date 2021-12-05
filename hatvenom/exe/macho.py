@@ -42,17 +42,22 @@ class Macho:
     }
 
     def generate(self, arch, data):
-        if data[:4] in self.magic:
-            return data
-
         if arch in self.headers.keys():
             if os.path.exists(self.headers[arch]):
-                if len(data) >= len('PAYLOAD:'):
-                    macho_file = open(self.headers[arch], 'rb')
-                    macho = macho_file.read()
-                    macho_file.close()
+                data_size = len(data)
 
-                    payload_index = macho.index(b'PAYLOAD:')
-                    content = macho[:payload_index] + data + macho[payload_index + len(data):]
-                    return content
+                pointer = b'PAYLOAD:'
+                pointer_size = len(pointer)
+
+                macho_file = open(self.headers[arch], 'rb')
+                macho = macho_file.read()
+                macho_file.close()
+
+                pointer_index = macho.index(pointer)
+
+                if data_size >= pointer_size:
+                    return macho[:pointer_index] + data + macho[pointer_index + data_size:]
+                return macho[:pointer_index] + data + macho[pointer_index + pointer_size:]
+
+                return content
         return b''
