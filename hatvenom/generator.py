@@ -37,15 +37,38 @@ class Generator(EXE, Encode):
         if file_format in self.exe_formats.keys():
             for offset in offsets.keys():
                 if (':' + offset + ':ip:').encode() in data:
-                    data = data.replace((':' + offset + ':ip:').encode(), socket.inet_aton(offsets[offset]))
+                    offset_code = (':' + offset + ':ip:').encode()
+                    data = self.replace_offset(offset_code, data, socket.inet_aton(offsets[offset]))
+
                 elif (':' + offset + ':port:').encode() in data:
-                    data = data.replace((':' + offset + ':port:').encode(), struct.pack('>H', int(offsets[offset])))
+                    offset_code = (':' + offset + ':port:').encode()
+                    data = self.replace_offset(offset_code, data, struct.pack('>H', int(offsets[offset])))
+
                 elif (':' + offset + ':string:').encode() in data:
-                    data = data.replace((':' + offset + ':string:').encode(), offsets[offset].encode())
+                    offset_code = (':' + offset + ':string:').encode()
+                    data = self.replace_offset(offset_code, data, offsets[offset].encode())
+
                 elif (':' + offset + ':').encode() in data:
-                    sub = offsets[offset] if isinstance(offsets[offset], bytes) else codecs.escape_decode(offsets[offset], 'hex')[0]
-                    data = data.replace((':' + offset + ':').encode(), sub)
+                    offset_code = (':' + offset + ':').encode()
+
+                    if isinstance(offsets[offset], bytes):
+                        content = offsets[offset]
+                    else:
+                        content = codecs.escape_decode(offsets[offset], 'hex')[0]
+
+                    data = self.replace_offset(offset_code, data, content)
+
                 else:
                     return b''
             return self.exe_formats[file_format].generate(arch, data)
         return b''
+
+    def replace_offset(self, offset, data, content):
+        content_size = len(content)
+
+        offset_size = len(offset)
+        offset_index = data.index(offset)
+
+        if content_size >= offset_size:
+            return data[:offset_index] + content + data[offset_index + content_size:]
+        return data[:offset_index] + content + data[offset_index + offset_size:]
