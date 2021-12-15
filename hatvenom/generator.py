@@ -64,11 +64,7 @@ class Generator(EXE, Encode):
         return b''
 
     def replace_offset(self, offset, data, content):
-        content_size = len(content)
-
         offset_size = len(offset)
         offset_index = data.index(offset)
 
-        if content_size >= offset_size:
-            return data[:offset_index] + content + data[offset_index + content_size:]
         return data[:offset_index] + content + data[offset_index + offset_size:]
