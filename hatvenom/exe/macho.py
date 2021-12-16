@@ -57,5 +57,8 @@ class Macho:
                 macho_file.close()
 
                 pointer_index = macho.index(pointer)
+
+                if data_size >= pointer_size:
+                    return macho[:pointer_index] + data + macho[pointer_index + data_size:]
                 return macho[:pointer_index] + data + macho[pointer_index + pointer_size:]
         return b''
