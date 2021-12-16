@@ -42,6 +42,9 @@ class Macho:
     }
 
     def generate(self, arch, data):
+        if data[:4] in self.magic:
+            return data
+
         if arch in self.headers.keys():
             if os.path.exists(self.headers[arch]):
                 data_size = len(data)
