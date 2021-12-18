@@ -38,15 +38,30 @@ class Generator(EXE, Encode):
             for offset in offsets.keys():
                 if (':' + offset + ':ip:').encode() in data:
                     offset_code = (':' + offset + ':ip:').encode()
-                    data = self.replace_offset(offset_code, data, socket.inet_aton(offsets[offset]))
+                    data = self.replace_offset(
+                        file_format,
+                        offset_code,
+                        data,
+                        socket.inet_aton(offsets[offset])
+                    )
 
                 elif (':' + offset + ':port:').encode() in data:
                     offset_code = (':' + offset + ':port:').encode()
-                    data = self.replace_offset(offset_code, data, struct.pack('>H', int(offsets[offset])))
+                    data = self.replace_offset(
+                        file_format,
+                        offset_code,
+                        data,
+                        struct.pack('>H', int(offsets[offset]))
+                    )
 
                 elif (':' + offset + ':string:').encode() in data:
                     offset_code = (':' + offset + ':string:').encode()
-                    data = self.replace_offset(offset_code, data, offsets[offset].encode())
+                    data = self.replace_offset(
+                        file_format,
+                        offset_code,
+                        data,
+                        offsets[offset].encode()
+                    )
 
                 elif (':' + offset + ':').encode() in data:
                     offset_code = (':' + offset + ':').encode()
@@ -56,14 +71,19 @@ class Generator(EXE, Encode):
                     else:
                         content = codecs.escape_decode(offsets[offset], 'hex')[0]
 
-                    data = self.replace_offset(offset_code, data, content)
+                    data = self.replace_offset(
+                        file_format,
+                        offset_code,
+                        data,
+                        content
+                    )
 
                 else:
                     return b''
             return self.exe_formats[file_format].generate(arch, data)
         return b''
 
-    def replace_offset(self, offset, data, content):
+    def replace_offset(self, file_format, offset, data, content):
         if self.exe_formats[file_format].generated(data):
             content_size = len(content)
             offset_size = len(offset)
