@@ -81,8 +81,13 @@ class PE:
         )
     }
 
-    def generate(self, arch, data):
+    def generated(self, data):
         if data[:2] in self.magic:
+            return True
+        return False
+
+    def generate(self, arch, data):
+        if self.generated(data):
             return data
 
         if arch in self.headers.keys():
