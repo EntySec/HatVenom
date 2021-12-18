@@ -41,8 +41,13 @@ class Macho:
         'aarch64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho_aarch64.bin'
     }
 
-    def generate(self, arch, data):
+    def generated(self, data):
         if data[:4] in self.magic:
+            return True
+        return False
+
+    def generate(self, arch, data):
+        if self.generated(data):
             return data
 
         if arch in self.headers.keys():
