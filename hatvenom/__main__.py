@@ -24,10 +24,14 @@
 # SOFTWARE.
 #
 
+from .asm import Asm
 from .generator import Generator
 
 
-class HatVenom(Generator):
+class HatVenom(Asm, Generator):
+    def assemble(self, code, arch):
+        return self.assemble_code(code, arch)
+
     def generate(self, file_format, arch, shellcode, offsets={}):
         return self.generate_payload(file_format, arch, shellcode, offsets)
 
