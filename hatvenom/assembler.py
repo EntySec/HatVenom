@@ -45,5 +45,5 @@ class Assembler:
     def assemble_code(self, code, arch):
         if arch in self.architectures:
             ks = keystone.Ks(*self.architectures[arch])
-            return bytes(ks.asm(code)[0])
+            return bytes(ks.asm(code.encode())[0])
         return None
