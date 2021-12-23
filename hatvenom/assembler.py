@@ -27,7 +27,7 @@
 import keystone
 
 
-class Asm:
+class Assembler:
     architectures = {
         'x86': [keystone.KS_ARCH_X86, keystone.KS_MODE_32],
         'x64': [keystone.KS_ARCH_X86, keystone.KS_MODE_64],
@@ -42,7 +42,7 @@ class Asm:
         'mipsbe': [keystone.KS_ARCH_MIPS, keystone.KS_MODE_MIPS32 + keystone.KS_MODE_BIG_ENDIAN]
     }
 
-    def asm(code, arch='x64'):
+    def assemble_code(code, arch):
         if arch in self.architectures:
             ks = keystone.Ks(*self.architectures[arch])
             return bytes(ks.asm(code)[0])
