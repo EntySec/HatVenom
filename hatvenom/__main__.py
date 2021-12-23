@@ -24,11 +24,11 @@
 # SOFTWARE.
 #
 
-from .asm import Asm
+from .assembler import Assembler
 from .generator import Generator
 
 
-class HatVenom(Asm, Generator):
+class HatVenom(Assembler, Generator):
     def assemble(self, code, arch):
         return self.assemble_code(code, arch)
 
