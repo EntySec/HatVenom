@@ -41,5 +41,8 @@ setup(name='hatvenom',
                 "hatvenom = hatvenom.cli:main"
           ]
       },
+      install_requires=[
+          'keystone-engine'
+      ],
       zip_safe=False
 )
