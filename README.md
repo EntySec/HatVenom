@@ -26,6 +26,12 @@ HatVenom is a HatSploit native powerful payload generation and shellcode injecti
 pip3 install git+https://github.com/EntySec/HatVenom
 ```
 
+## Supported targets
+
+|sas|sas|
+|----|-----|
+|sas|sas|
+
 ## Basic functions
 
 There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject shellcode.
