@@ -66,7 +66,7 @@ code = (
     "syscall"
 )
 
-hatvenom = HatVenom
+hatvenom = HatVenom()
 shellcode = hatvenom.assemble(code, 'x64')
 ```
 
