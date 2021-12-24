@@ -30,9 +30,9 @@ pip3 install git+https://github.com/EntySec/HatVenom
 
 |Format|Architecture|
 |----|-----|
-|`elf`|`x86`, `x64`, `armle`, `aarch64`, `mipsle`, `mipsbe`|
-|`macho`|`x64`|
-|`pe`|`x86`, `x64`|
+|**`elf`**|`x86`, `x64`, `armle`, `aarch64`, `mipsle`, `mipsbe`|
+|**`macho`**|`x64`|
+|**`pe`**|`x86`, `x64`|
 
 ## Basic functions
 
