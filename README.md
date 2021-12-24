@@ -28,11 +28,8 @@ pip3 install git+https://github.com/EntySec/HatVenom
 
 ## Supported targets
 
-|Format|Architecture|
-|----|-----|
-|**`elf`**|`x86`, `x64`, `armle`, `aarch64`, `mipsle`, `mipsbe`|
-|**`macho`**|`x64`|
-|**`pe`**|`x86`, `x64`|
+| Format | `x86` | `x64` | `armle` | `armbe` | `aarch64` | `mipsle` | `mipsbe` | `mips64le` | `mips64be` |
+|--------|-------|-------|---------|---------|-----------|----------|----------|------------|------------|
 
 ## Basic functions
 
