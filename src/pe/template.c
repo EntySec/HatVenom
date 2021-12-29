@@ -7,6 +7,6 @@ char comment[512] = "";
 
 int main(int argc, char **argv)
 {
-	  (*(void (*)()) payload)();
-	  return 0;
+    (*(void (*)()) payload)();
+    return 0;
 }
