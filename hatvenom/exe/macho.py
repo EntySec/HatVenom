@@ -37,8 +37,8 @@ class Macho:
     ]
 
     headers = {
-        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho_x64.bin',
-        'aarch64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho_aarch64.bin'
+        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho/macho_x64.bin',
+        'aarch64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/macho/macho_aarch64.bin'
     }
 
     def generated(self, data):
@@ -57,13 +57,11 @@ class Macho:
                 pointer = b'PAYLOAD:'
                 pointer_size = len(pointer)
 
-                macho_file = open(self.headers[arch], 'rb')
-                macho = macho_file.read()
-                macho_file.close()
+                with open(self.headers[arch], 'rb') as macho_file:
+                    macho = macho_file.read()
+                    pointer_index = macho.index(pointer)
 
-                pointer_index = macho.index(pointer)
-
-                if data_size >= pointer_size:
-                    return macho[:pointer_index] + data + macho[pointer_index + data_size:]
-                return macho[:pointer_index] + data + macho[pointer_index + pointer_size:]
+                    if data_size >= pointer_size:
+                        return macho[:pointer_index] + data + macho[pointer_index + data_size:]
+                    return macho[:pointer_index] + data + macho[pointer_index + pointer_size:]
         return b''

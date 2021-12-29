@@ -24,18 +24,40 @@
 # SOFTWARE.
 #
 
-from .pe import PE
-from .dll import DLL
-from .raw import Raw
-from .elf import ELF
-from .macho import Macho
+import os
 
 
-class EXE:
-    exe_formats = {
-        'pe': PE(),
-        'dll': DLL(),
-        'raw': Raw(),
-        'elf': ELF(),
-        'macho': Macho()
+class DLL:
+    magic = [
+        b"\x4d\x5a"
+    ]
+
+    headers = {
+        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/dll/dll_x64.dll',
+        'x86': f'{os.path.dirname(os.path.dirname(__file__))}/templates/dll/dll_x86.dll'
     }
+
+    def generated(self, data):
+        if data[:2] in self.magic:
+            return True
+        return False
+
+    def generate(self, arch, data):
+        if self.generated(data):
+            return data
+
+        if arch in self.headers.keys():
+            if os.path.exists(self.headers[arch]):
+                data_size = len(data)
+
+                pointer = b'PAYLOAD:'
+                pointer_size = len(pointer)
+
+                with open(self.headers[arch], 'rb') as dll_file:
+                    dll = dll_file.read()
+                    pointer_index = dll.index(pointer)
+
+                    if data_size >= pointer_size:
+                        return dll[:pointer_index] + data + dll[pointer_index + data_size:]
+                    return dll[:pointer_index] + data + dll[pointer_index + pointer_size:]
+        return b''
