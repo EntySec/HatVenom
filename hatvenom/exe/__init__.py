@@ -25,6 +25,7 @@
 #
 
 from .pe import PE
+from .dll import DLL
 from .raw import Raw
 from .elf import ELF
 from .macho import Macho
@@ -33,6 +34,7 @@ from .macho import Macho
 class EXE:
     exe_formats = {
         'pe': PE(),
+        'dll': DLL(),
         'raw': Raw(),
         'elf': ELF(),
         'macho': Macho()
