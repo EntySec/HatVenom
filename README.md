@@ -16,7 +16,7 @@ HatVenom is a HatSploit native powerful payload generation and shellcode injecti
 
 ## Features
 
-* Support for most common executable formats like `elf`, `macho`, `pe`.
+* Support for most common executable formats like `elf`, `macho`, `pe`, `dll`.
 * Support for most common architectures like `x64`, `x86`, `aarch64`, `armle`, `mipsle`, `mipsbe`.
 * Ability to modify shellcode by changing pre-defined offsets.
 
@@ -33,6 +33,12 @@ pip3 install git+https://github.com/EntySec/HatVenom
 | **elf**   | yes | yes | yes | no | yes | yes | yes | no | no |
 | **macho** | no | yes | no | no | no | no | no | no | no |
 | **pe**    | yes | yes | no | no | no | no | no | no | no |
+| **dll**   | yes | yes | no | no | no | no | no | no | no |
+
+**elf** - Unix Executable & Linkable Format.
+**macho** - macOS / Apple iOS Mach-O executable format.
+**pe** - Windows Portable Executable format.
+**dll** - Windows Dynamic Link Library format.
 
 ## Basic functions
 
