@@ -24,6 +24,8 @@
 # SOFTWARE.
 #
 
+import os
+
 
 class PE:
     magic = [
