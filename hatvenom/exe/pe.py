@@ -55,7 +55,7 @@ class PE:
 
                 with open(self.headers[arch], 'rb') as pe_file:
                     pe = pe_file.read()
-                    pointer_index = macho.index(pointer)
+                    pointer_index = pe.index(pointer)
 
                     if data_size >= pointer_size:
                         return pe[:pointer_index] + data + pe[pointer_index + data_size:]
