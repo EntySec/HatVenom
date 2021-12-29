@@ -33,8 +33,8 @@ class PE:
     ]
 
     headers = {
-        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/pe/pe_x64.bin',
-        'x86': f'{os.path.dirname(os.path.dirname(__file__))}/templates/pe/pe_x86.bin'
+        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/pe/pe_x64.exe',
+        'x86': f'{os.path.dirname(os.path.dirname(__file__))}/templates/pe/pe_x86.exe'
     }
 
     def generated(self, data):
