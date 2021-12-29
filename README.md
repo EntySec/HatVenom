@@ -35,10 +35,10 @@ pip3 install git+https://github.com/EntySec/HatVenom
 | **pe**    | yes | yes | no | no | no | no | no | no | no |
 | **dll**   | yes | yes | no | no | no | no | no | no | no |
 
-**elf** - Unix Executable & Linkable Format.
-**macho** - macOS / Apple iOS Mach-O executable format.
-**pe** - Windows Portable Executable format.
-**dll** - Windows Dynamic Link Library format.
+* **elf** - Unix Executable & Linkable Format.
+* **macho** - macOS / Apple iOS Mach-O executable format.
+* **pe** - Windows Portable Executable format.
+* **dll** - Windows Dynamic Link Library format.
 
 ## Basic functions
 
