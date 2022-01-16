@@ -31,7 +31,7 @@ from .converter import Converter
 
 class Generator(EXE, Encode, Converter):
     @staticmethod
-    def detect_endian(self, arch):
+    def detect_endian(arch):
         if arch.endswith('be'):
             return 'big'
         return 'little'
