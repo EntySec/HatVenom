@@ -42,7 +42,7 @@ class Assembler:
         'mipsbe': [keystone.KS_ARCH_MIPS, keystone.KS_MODE_MIPS32 + keystone.KS_MODE_BIG_ENDIAN]
     }
 
-    def assemble_code(self, code, arch):
+    def assemble_code(self, arch, code):
         if arch in self.architectures:
             ks = keystone.Ks(*self.architectures[arch])
             return bytes(ks.asm(code.encode())[0])
