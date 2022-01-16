@@ -29,8 +29,8 @@ from .generator import Generator
 
 
 class HatVenom(Assembler, Generator):
-    def assemble(self, code, arch):
-        return self.assemble_code(code, arch)
+    def assemble(self, arch, code):
+        return self.assemble_code(arch, code)
 
     def convert_host(self, host, endian='little'):
         return self.host_to_bytes(host, endian)
