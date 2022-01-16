@@ -24,15 +24,12 @@
 # SOFTWARE.
 #
 
-import socket
-import struct
-import codecs
-
 from .exe import EXE
 from .encode import Encode
+from .converter import Converter
 
 
-class Generator(EXE, Encode):
+class Generator(EXE, Encode, Converter):
     def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.exe_formats.keys():
             for offset in offsets.keys():
@@ -42,7 +39,7 @@ class Generator(EXE, Encode):
                         file_format,
                         offset_code,
                         data,
-                        socket.inet_aton(offsets[offset])
+                        self.host_to_bytes(offsets[offset], self.exe_endian[arch])
                     )
 
                 elif (':' + offset + ':port:').encode() in data:
@@ -51,7 +48,7 @@ class Generator(EXE, Encode):
                         file_format,
                         offset_code,
                         data,
-                        struct.pack('>H', int(offsets[offset]))
+                        self.port_to_bytes(offsets[offset], self.exe_endian[arch])
                     )
 
                 elif (':' + offset + ':string:').encode() in data:
@@ -69,7 +66,7 @@ class Generator(EXE, Encode):
                     if isinstance(offsets[offset], bytes):
                         content = offsets[offset]
                     else:
-                        content = codecs.escape_decode(offsets[offset], 'hex')[0]
+                        content = offsets[offset].encode()
 
                     data = self.replace_offset(
                         file_format,
