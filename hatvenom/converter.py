@@ -26,7 +26,6 @@
 
 import struct
 import socket
-import binascii
 
 
 class Converter:
@@ -52,7 +51,3 @@ class Converter:
             return struct.pack('>H', htons)
         else:
             return b''
-
-    @staticmethod
-    def string_to_bytes(string):
-        return (b'0x' + binascii.hexlify(string.encode())).decode()
