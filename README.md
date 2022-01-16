@@ -45,6 +45,8 @@ pip3 install git+https://github.com/EntySec/HatVenom
 There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject shellcode.
 
 * `assemble(code, arch)` - Generate byte code for specified target from specified code.
+* `convert_host(host, endian='little')` - Convert host to bytes.
+* `convert_port(port, endian='little')` - Convert port to bytes.
 * `generate(file_format, arch, shellcode, offsets={})` - Generates payload for specified target and with specified shellcode.
 * `generate_to(file_format, arch, shellcode, offsets={}, filename='a.out')` - Generates payload for specified target and with specified shellcode and saves it to the specified file.
 
