@@ -25,11 +25,10 @@
 #
 
 from .assembler import Assembler
-from .converter import Converter
 from .generator import Generator
 
 
-class HatVenom(Assembler, Converter, Generator):
+class HatVenom(Assembler, Generator):
     def assemble(self, code, arch):
         return self.assemble_code(code, arch)
 
