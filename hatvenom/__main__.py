@@ -25,12 +25,22 @@
 #
 
 from .assembler import Assembler
+from .converter import Converter
 from .generator import Generator
 
 
-class HatVenom(Assembler, Generator):
+class HatVenom(Assembler, Converter, Generator):
     def assemble(self, code, arch):
         return self.assemble_code(code, arch)
+
+    def convert_host(self, host, order='little'):
+        self.host_to_bytes(host, order)
+
+    def convert_port(self, port, order='little'):
+        self.port_to_bytes(port, order)
+
+    def convert_string(self, string):
+        self.string_to_bytes(string)
 
     def generate(self, file_format, arch, shellcode, offsets={}):
         return self.generate_payload(file_format, arch, shellcode, offsets)
