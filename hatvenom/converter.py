@@ -46,8 +46,8 @@ class Converter:
         htons = socket.htons(port)
 
         if endian == 'little':
-            return struct.pack('<H', htons)
-        elif endian == 'big':
             return struct.pack('>H', htons)
+        elif endian == 'big':
+            return struct.pack('<H', htons)
         else:
             return b''
