@@ -33,11 +33,11 @@ class HatVenom(Assembler, Converter, Generator):
     def assemble(self, code, arch):
         return self.assemble_code(code, arch)
 
-    def convert_host(self, host, order='little'):
-        self.host_to_bytes(host, order)
+    def convert_host(self, host, endian='little'):
+        self.host_to_bytes(host, endian)
 
-    def convert_port(self, port, order='little'):
-        self.port_to_bytes(port, order)
+    def convert_port(self, port, endian='little'):
+        self.port_to_bytes(port, endian)
 
     def convert_string(self, string):
         self.string_to_bytes(string)
