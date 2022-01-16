@@ -39,9 +39,6 @@ class HatVenom(Assembler, Converter, Generator):
     def convert_port(self, port, endian='little'):
         self.port_to_bytes(port, endian)
 
-    def convert_string(self, string):
-        self.string_to_bytes(string)
-
     def generate(self, file_format, arch, shellcode, offsets={}):
         return self.generate_payload(file_format, arch, shellcode, offsets)
 
