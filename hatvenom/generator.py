@@ -30,6 +30,12 @@ from .converter import Converter
 
 
 class Generator(EXE, Encode, Converter):
+    @staticmethod
+    def detect_endian(self, arch):
+        if arch.endswith('be'):
+            return 'big'
+        return 'little'
+
     def generate_payload(self, file_format, arch, data, offsets={}):
         if file_format in self.exe_formats.keys():
             for offset in offsets.keys():
@@ -39,7 +45,10 @@ class Generator(EXE, Encode, Converter):
                         file_format,
                         offset_code,
                         data,
-                        self.host_to_bytes(offsets[offset], self.exe_endian[arch])
+                        self.host_to_bytes(
+                            offsets[offset],
+                            self.detect_endian(arch)
+                        )
                     )
 
                 elif (':' + offset + ':port:').encode() in data:
@@ -48,7 +57,10 @@ class Generator(EXE, Encode, Converter):
                         file_format,
                         offset_code,
                         data,
-                        self.port_to_bytes(offsets[offset], self.exe_endian[arch])
+                        self.port_to_bytes(
+                            offsets[offset],
+                            self.detect_endian(arch)
+                        )
                     )
 
                 elif (':' + offset + ':string:').encode() in data:
