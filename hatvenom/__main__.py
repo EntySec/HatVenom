@@ -33,10 +33,10 @@ class HatVenom(Assembler, Generator):
         return self.assemble_code(code, arch)
 
     def convert_host(self, host, endian='little'):
-        self.host_to_bytes(host, endian)
+        return self.host_to_bytes(host, endian)
 
     def convert_port(self, port, endian='little'):
-        self.port_to_bytes(port, endian)
+        return self.port_to_bytes(port, endian)
 
     def generate(self, file_format, arch, shellcode, offsets={}):
         return self.generate_payload(file_format, arch, shellcode, offsets)
