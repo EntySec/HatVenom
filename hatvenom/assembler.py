@@ -55,5 +55,5 @@ class Assembler:
             machine = ks.asm(code.encode())
 
             if machine:
-                return bytes(machine)[0]
+                return bytes(machine[0])
         return b''
