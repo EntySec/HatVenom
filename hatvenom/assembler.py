@@ -42,8 +42,18 @@ class Assembler:
         'mipsbe': [keystone.KS_ARCH_MIPS, keystone.KS_MODE_MIPS32 + keystone.KS_MODE_BIG_ENDIAN]
     }
 
-    def assemble_code(self, arch, code):
+    def assemble_code(self, arch, code, mode=None):
         if arch in self.architectures:
-            ks = keystone.Ks(*self.architectures[arch])
-            return bytes(ks.asm(code.encode())[0])
-        return None
+            target = self.architectures[arch]
+
+            if arch == 'armle' and mode == 'thumb':
+                target[1] = keystone.KS_MODE_THUMB + keystone.KS_MODE_LITTLE_ENDIAN
+            elif arch == 'armbe' and mode == 'thumb':
+                target[1] = keystone.KS_MODE_THUMB + keystone.KS_MODE_BIG_ENDIAN
+
+            ks = keystone.Ks(*target)
+            machine = ks.asm(code.encode())
+
+            if machine:
+                return bytes(machine)[0])
+        return b''
