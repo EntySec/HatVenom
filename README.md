@@ -12,7 +12,7 @@
     </a>
 </p>
 
-HatVenom is a HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.
+HatVenom is a HatSploit native powerful payload generation tool that provides support for all common platforms and architectures.
 
 ## Features
 
@@ -44,33 +44,10 @@ pip3 install git+https://github.com/EntySec/HatVenom
 
 There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject shellcode.
 
-* `assemble(arch, code, mode=None)` - Generate byte code for specified target from specified code (`mode` argument is used for `armle` and `armbe` to switch between `thumb` command set mode or `arm`).
 * `convert_host(host, endian='little')` - Convert host to bytes.
 * `convert_port(port, endian='little')` - Convert port to bytes.
 * `generate(file_format, arch, shellcode, offsets={})` - Generates payload for specified target and with specified shellcode.
 * `generate_to(file_format, arch, shellcode, offsets={}, filename='a.out')` - Generates payload for specified target and with specified shellcode and saves it to the specified file.
-
-## Assembling code
-
-It's very easy to assemble code for various targets in HatVenom. Let's assemble a simple code that calls shutdown for Linux.
-
-```python
-from hatvenom import HatVenom
-
-code = """
-start:
-    push 0x3e
-    pop rax
-    push -1
-    pop rdi
-    push 0x9
-    pop rsi
-    syscall
-"""
-
-hatvenom = HatVenom()
-shellcode = hatvenom.assemble('x64', code)
-```
 
 ## Generating payload
 
