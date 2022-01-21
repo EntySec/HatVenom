@@ -24,14 +24,10 @@
 # SOFTWARE.
 #
 
-from .assembler import Assembler
 from .generator import Generator
 
 
-class HatVenom(Assembler, Generator):
-    def assemble(self, arch, code, mode=None):
-        return self.assemble_code(arch, code, mode)
-
+class HatVenom(Generator):
     def convert_host(self, host, endian='little'):
         return self.host_to_bytes(host, endian)
 
