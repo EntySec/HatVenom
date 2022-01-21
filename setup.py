@@ -28,7 +28,7 @@ from setuptools import setup, find_packages
 
 setup(name='hatvenom',
       version='2.0.0',
-      description='HatVenom is a HatSploit native powerful payload generation and shellcode injection tool that provides support for common platforms and architectures.',
+      description='HatVenom is a HatSploit native powerful payload generation tool that provides support for all common platforms and architectures.',
       url='http://github.com/EntySec/HatVenom',
       author='EntySec',
       author_email='entysec@gmail.com',
