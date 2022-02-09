@@ -27,7 +27,7 @@
 
 class Raw:
     def generated(self, data):
-        return False
+        return True
 
     def generate(self, arch, data):
         if self.generated(data):
