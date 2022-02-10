@@ -43,7 +43,7 @@ class Converter:
 
     @staticmethod
     def port_to_bytes(port, endian='little'):
-        htons = socket.htons(port)
+        htons = socket.htons(int(port))
 
         if endian == 'little':
             return struct.pack('>H', htons)
