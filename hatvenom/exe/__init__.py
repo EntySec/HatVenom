@@ -24,18 +24,18 @@
 # SOFTWARE.
 #
 
-from .pe import PE
-from .dll import DLL
+from .pe import Pe
+from .dll import Dll
 from .raw import Raw
-from .elf import ELF
+from .elf import Elf
 from .macho import Macho
 
 
-class EXE:
+class Exe:
     exe_formats = {
-        'pe': PE(),
-        'dll': DLL(),
+        'pe': Pe(),
+        'dll': Dll(),
         'raw': Raw(),
-        'elf': ELF(),
+        'elf': Elf(),
         'macho': Macho()
     }
