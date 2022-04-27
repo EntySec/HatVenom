@@ -33,7 +33,7 @@ class Dll(Dll):
             return True
         return False
 
-    def generate(self, arch, data, dll_inj_funcs='', filename=''):
+    def generate(self, arch, data, dll_inj_funcs=[], filename='kernel32'):
         if self.generated(data):
             return data
 
