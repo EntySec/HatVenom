@@ -27,7 +27,7 @@
 import os
 
 
-class DLL:
+class Dll:
     magic = [
         b"\x4d\x5a"
     ]
