@@ -27,7 +27,7 @@
 import struct
 
 
-class ELF:
+class Elf:
     magic = [
         b"\x7f\x45\x4c\x46"
     ]
