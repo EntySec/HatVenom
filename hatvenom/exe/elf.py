@@ -24,7 +24,7 @@
 # SOFTWARE.
 #
 
-from pex.elf import Elf
+from pex.exe import Elf
 
 
 class Elf(Elf):
