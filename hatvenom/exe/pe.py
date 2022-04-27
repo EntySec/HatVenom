@@ -27,7 +27,7 @@
 import os
 
 
-class PE:
+class Pe:
     magic = [
         b"\x4d\x5a"
     ]
