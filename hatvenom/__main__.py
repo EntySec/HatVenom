@@ -28,12 +28,6 @@ from .generator import Generator
 
 
 class HatVenom(Generator):
-    def convert_host(self, host, endian='little'):
-        return self.host_to_bytes(host, endian)
-
-    def convert_port(self, port, endian='little'):
-        return self.port_to_bytes(port, endian)
-
     def generate(self, file_format, arch, shellcode, offsets={}):
         return self.generate_payload(file_format, arch, shellcode, offsets)
 
