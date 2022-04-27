@@ -24,40 +24,17 @@
 # SOFTWARE.
 #
 
-import os
+from pex.exe import Dll
 
 
-class Dll:
-    magic = [
-        b"\x4d\x5a"
-    ]
-
-    headers = {
-        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/dll/dll_x64.dll',
-        'x86': f'{os.path.dirname(os.path.dirname(__file__))}/templates/dll/dll_x86.dll'
-    }
-
+class Dll(Dll):
     def generated(self, data):
         if data[:2] in self.magic:
             return True
         return False
 
-    def generate(self, arch, data):
+    def generate(self, arch, data, dll_inj_funcs='', filename=''):
         if self.generated(data):
             return data
 
-        if arch in self.headers.keys():
-            if os.path.exists(self.headers[arch]):
-                data_size = len(data)
-
-                pointer = b'PAYLOAD:'
-                pointer_size = len(pointer)
-
-                with open(self.headers[arch], 'rb') as dll_file:
-                    dll = dll_file.read()
-                    pointer_index = dll.index(pointer)
-
-                    if data_size >= pointer_size:
-                        return dll[:pointer_index] + data + dll[pointer_index + data_size:]
-                    return dll[:pointer_index] + data + dll[pointer_index + pointer_size:]
-        return b''
+        return self.pack_dll(arch, data, dll_inj_funcs, filename)
