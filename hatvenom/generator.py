@@ -24,12 +24,12 @@
 # SOFTWARE.
 #
 
-from .exe import EXE
-from .encode import Encode
-from .converter import Converter
+from pex.socket import Socket
+
+from .exe import Exe
 
 
-class Generator(EXE, Encode, Converter):
+class Generator(Socket, Exe):
     @staticmethod
     def detect_endian(arch):
         if arch.endswith('be'):
@@ -45,7 +45,7 @@ class Generator(EXE, Encode, Converter):
                         file_format,
                         offset_code,
                         data,
-                        self.host_to_bytes(
+                        self.pack_host(
                             offsets[offset],
                             self.detect_endian(arch)
                         )
@@ -57,7 +57,7 @@ class Generator(EXE, Encode, Converter):
                         file_format,
                         offset_code,
                         data,
-                        self.port_to_bytes(
+                        self.pack_port(
                             offsets[offset],
                             self.detect_endian(arch)
                         )
