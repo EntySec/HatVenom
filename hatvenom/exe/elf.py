@@ -29,9 +29,12 @@ from pex.elf import Elf
 
 class Elf(Elf):
     def generated(self, data):
-        if data[:4] == self.magic:
+        if data[:4] in self.magic:
             return True
         return False
 
     def generate(self, arch, data):
+        if self.generated(data):
+            return data
+
         return self.pack_elf(arch, data)
