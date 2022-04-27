@@ -24,19 +24,10 @@
 # SOFTWARE.
 #
 
-import os
+from pex.exe import Pe
 
 
-class Pe:
-    magic = [
-        b"\x4d\x5a"
-    ]
-
-    headers = {
-        'x64': f'{os.path.dirname(os.path.dirname(__file__))}/templates/pe/pe_x64.exe',
-        'x86': f'{os.path.dirname(os.path.dirname(__file__))}/templates/pe/pe_x86.exe'
-    }
-
+class Pe(Pe):
     def generated(self, data):
         if data[:2] in self.magic:
             return True
@@ -46,18 +37,4 @@ class Pe:
         if self.generated(data):
             return data
 
-        if arch in self.headers.keys():
-            if os.path.exists(self.headers[arch]):
-                data_size = len(data)
-
-                pointer = b'PAYLOAD:'
-                pointer_size = len(pointer)
-
-                with open(self.headers[arch], 'rb') as pe_file:
-                    pe = pe_file.read()
-                    pointer_index = pe.index(pointer)
-
-                    if data_size >= pointer_size:
-                        return pe[:pointer_index] + data + pe[pointer_index + data_size:]
-                    return pe[:pointer_index] + data + pe[pointer_index + pointer_size:]
-        return b''
+        return self.pack_pe(arch, data)
