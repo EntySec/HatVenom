@@ -42,7 +42,9 @@ setup(name='hatvenom',
           ]
       },
       install_requires=[
-          'keystone-engine'
+          'keystone-engine',
+
+          'pex @ git+https://github.com/EntySec/Pex'
       ],
       zip_safe=False
 )
