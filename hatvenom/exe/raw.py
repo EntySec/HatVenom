@@ -32,7 +32,3 @@ class Raw:
     def generate(self, arch, data):
         if self.generated(data):
             return data
-
-        if arch in ['generic']:
-            return data
-        return None
