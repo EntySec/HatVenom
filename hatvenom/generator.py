@@ -37,7 +37,7 @@ class Generator(Socket, Exe):
         return 'little'
 
     def generate_payload(self, file_format, arch, data, offsets={}):
-        if file_format in self.exe_formats.keys():
+        if file_format is None or file_format in self.exe_formats.keys():
             for offset in offsets.keys():
                 if (':' + offset + ':ip:').encode() in data:
                     offset_code = (':' + offset + ':ip:').encode()
@@ -89,6 +89,10 @@ class Generator(Socket, Exe):
 
                 else:
                     return b''
+
+            if file_format is None:
+                return data
+
             return self.exe_formats[file_format].generate(arch, data)
         return b''
 
