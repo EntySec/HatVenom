@@ -27,13 +27,7 @@
 from .exe import Exe
 
 
-class Generator(Socket, Exe):
-    @staticmethod
-    def detect_endian(arch):
-        if arch.endswith('be'):
-            return 'big'
-        return 'little'
-
+class Generator(Exe):
     def generate_payload(self, file_format, arch, data):
         if file_format in self.exe_formats.keys():
             return self.exe_formats[file_format].generate(arch, data)
