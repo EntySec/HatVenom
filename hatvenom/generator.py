@@ -31,4 +31,4 @@ class Generator(Exe):
     def generate_payload(self, file_format, arch, data):
         if file_format in self.exe_formats.keys():
             return self.exe_formats[file_format].generate(arch, data)
-        return b''
+        return data
