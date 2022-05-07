@@ -28,9 +28,9 @@ from .generator import Generator
 
 
 class HatVenom(Generator):
-    def generate(self, file_format, arch, shellcode, offsets={}):
-        return self.generate_payload(file_format, arch, shellcode, offsets)
+    def generate(self, file_format, arch, shellcode):
+        return self.generate_payload(file_format, arch, shellcode)
 
-    def generate_to(self, file_format, arch, shellcode, offsets={}, filename='a.out'):
+    def generate_to(self, file_format, arch, shellcode, filename='a.out'):
         with open(filename, 'wb') as f:
-            f.write(self.generate_payload(file_format, arch, shellcode, offsets))
+            f.write(self.generate_payload(file_format, arch, shellcode))
