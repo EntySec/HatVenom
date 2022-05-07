@@ -24,8 +24,6 @@
 # SOFTWARE.
 #
 
-from pex.socket import Socket
-
 from .exe import Exe
 
 
@@ -36,75 +34,7 @@ class Generator(Socket, Exe):
             return 'big'
         return 'little'
 
-    def generate_payload(self, file_format, arch, data, offsets={}):
-        if file_format is None or file_format in self.exe_formats.keys():
-            for offset in offsets.keys():
-                if (':' + offset + ':ip:').encode() in data:
-                    offset_code = (':' + offset + ':ip:').encode()
-                    data = self.replace_offset(
-                        file_format,
-                        offset_code,
-                        data,
-                        self.pack_host(
-                            offsets[offset],
-                            self.detect_endian(arch)
-                        )
-                    )
-
-                elif (':' + offset + ':port:').encode() in data:
-                    offset_code = (':' + offset + ':port:').encode()
-                    data = self.replace_offset(
-                        file_format,
-                        offset_code,
-                        data,
-                        self.pack_port(
-                            offsets[offset],
-                            self.detect_endian(arch)
-                        )
-                    )
-
-                elif (':' + offset + ':string:').encode() in data:
-                    offset_code = (':' + offset + ':string:').encode()
-                    data = self.replace_offset(
-                        file_format,
-                        offset_code,
-                        data,
-                        offsets[offset].encode()
-                    )
-
-                elif (':' + offset + ':').encode() in data:
-                    offset_code = (':' + offset + ':').encode()
-
-                    if isinstance(offsets[offset], bytes):
-                        content = offsets[offset]
-                    else:
-                        content = offsets[offset].encode()
-
-                    data = self.replace_offset(
-                        file_format,
-                        offset_code,
-                        data,
-                        content
-                    )
-
-                else:
-                    return b''
-
-            if file_format is None:
-                return data
-
+    def generate_payload(self, file_format, arch, data):
+        if file_format in self.exe_formats.keys():
             return self.exe_formats[file_format].generate(arch, data)
         return b''
-
-    def replace_offset(self, file_format, offset, data, content):
-        if self.exe_formats[file_format].generated(data):
-            content_size = len(content)
-            offset_size = len(offset)
-
-            offset_index = data.index(offset)
-
-            if content_size >= offset_size:
-                return data[:offset_index] + content + data[offset_index + content_size:]
-            return data[:offset_index] + content + data[offset_index + offset_size:]
-
-        return data.replace(offset, content)
