@@ -18,7 +18,7 @@ HatVenom is a HatSploit native powerful payload generation tool that provides su
 
 * Support for most common executable formats like `elf`, `macho`, `pe`, `dll`.
 * Support for most common architectures like `x64`, `x86`, `aarch64`, `armle`, `mipsle`, `mipsbe`.
-* Ability to modify shellcode by changing pre-defined offsets.
+* Ability to modify shellcode and inject assembly (coming soon).
 
 ## Installation
 
