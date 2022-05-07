@@ -32,15 +32,6 @@ from .generator import Generator
 from .badges import Badges
 
 
-class StoreDictKeyPair(argparse.Action):
-    def __call__(self, parser, namespace, values, option_string=None):
-        my_dict = {}
-        for kv in values.split(","):
-            k, v = kv.split("=")
-            my_dict[k] = v
-        setattr(namespace, self.dest, my_dict)
-
-
 class HatVenomCLI(Generator, Badges):
     description = (
         "HatVenom is a HatSploit native powerful payload generation and shellcode injection tool"
@@ -50,7 +41,6 @@ class HatVenomCLI(Generator, Badges):
     parser.add_argument('-f', '--format', dest='format', help='Platform to generate for.')
     parser.add_argument('-a', '--arch', dest='arch', help='Architecture to generate for.')
     parser.add_argument('-s', '--shellcode', dest='shellcode', help='Shellcode to inject.')
-    parser.add_argument('--offsets', dest='offsets', help='Shellcode offsets.', action=StoreDictKeyPair)
     parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
     args = parser.parse_args()
 
@@ -62,13 +52,11 @@ class HatVenomCLI(Generator, Badges):
                 return
 
         if self.args.format and self.args.arch and self.args.shellcode:
-            offsets = dict() if not self.args.offsets else self.args.offsets
-
             filename = self.args.output if self.args.output else 'a.out'
             shellcode = codecs.escape_decode(self.args.shellcode, 'hex')[0]
 
             self.print_process("Generating payload...")
-            payload = self.generate_payload(self.args.format, self.args.arch, shellcode, offsets)
+            payload = self.generate_payload(self.args.format, self.args.arch, shellcode)
 
             if payload is None:
                 self.print_error(f"Invalid format or architecture specified!")
