@@ -34,7 +34,7 @@ from .badges import Badges
 
 class HatVenomCLI(Generator, Badges):
     description = (
-        "HatVenom is a HatSploit native powerful payload generation and shellcode injection tool"
+        "HatVenom is a powerful payload generation and shellcode injection tool"
         " that provides support for common platforms and architectures."
     )
     parser = argparse.ArgumentParser(description=description)
