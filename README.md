@@ -12,7 +12,7 @@
     </a>
 </p>
 
-HatVenom is a HatSploit native powerful payload generation tool that provides support for all common platforms and architectures.
+HatVenom is a powerful payload generation tool that provides support for all common platforms and architectures.
 
 ## Features
 
