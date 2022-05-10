@@ -71,7 +71,7 @@ HatVenom also has their own command line interface that can be invoked by execut
 ```
 usage: hatvenom [-h] [-f FORMAT] [-a ARCH] [-s SHELLCODE] [-o OUTPUT]
 
-HatVenom is a HatSploit native powerful payload generation and shellcode
+HatVenom is a powerful payload generation and shellcode
 injection tool that provides support for common platforms and architectures.
 
 optional arguments:
