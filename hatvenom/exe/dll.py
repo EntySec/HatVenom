@@ -24,10 +24,10 @@
 # SOFTWARE.
 #
 
-from pex.exe import Dll
+from pex.exe import DLL
 
 
-class Dll(Dll):
+class Dll(DLL):
     def generated(self, data):
         if data[:2] in self.magic:
             return True
