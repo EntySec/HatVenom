@@ -24,10 +24,10 @@
 # SOFTWARE.
 #
 
-from pex.exe import Pe
+from pex.exe import PE
 
 
-class Pe(Pe):
+class Pe(PE):
     def generated(self, data):
         if data[:2] in self.magic:
             return True
