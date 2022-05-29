@@ -24,10 +24,10 @@
 # SOFTWARE.
 #
 
-from pex.exe import Elf
+from pex.exe import ELF
 
 
-class Elf(Elf):
+class Elf(ELF):
     def generated(self, data):
         if data[:4] in self.magic:
             return True
