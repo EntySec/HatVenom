@@ -28,8 +28,7 @@ pip3 install git+https://github.com/EntySec/HatVenom
 
 ## Supported targets
 
-| Format    | **x86** | **x64** | **armle** | **armbe** | **aarch64** | **mipsle** | **mipsbe** | **mips64le** | **
-mips64be** |
+| Format    | **x86** | **x64** | **armle** | **armbe** | **aarch64** | **mipsle** | **mipsbe** | **mips64le** | **mips64be** |
 |-----------|---------|---------|-----------|-----------|-------------|------------|------------|--------------|--------------|
 | **elf**   | yes | yes | yes | no | yes | yes | yes | no | no |
 | **macho** | no | yes | no | no | no | no | no | no | no |
@@ -43,17 +42,14 @@ mips64be** |
 
 ## Basic functions
 
-There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject
-shellcode.
+There are all HatVenom basic functions that can be used to generate payload, covert data, assemble code or inject shellcode.
 
 * `generate(file_format, arch, shellcode)` - Generates payload for specified target and with specified shellcode.
-* `generate_to(file_format, arch, shellcode, filename='a.out')` - Generates payload for specified target and with
-  specified shellcode and saves it to the specified file.
+* `generate_to(file_format, arch, shellcode, filename='a.out')` - Generates payload for specified target and with specified shellcode and saves it to the specified file.
 
 ## Generating payload
 
-It's very easy to generate payload for various targets in HatVenom. Let's generate a simple payload that kills all
-processes for Linux and save it to `a.out`.
+It's very easy to generate payload for various targets in HatVenom. Let's generate a simple payload that kills all processes for Linux and save it to `a.out`.
 
 ### Examples
 
