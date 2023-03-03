@@ -32,6 +32,9 @@ class Generator(PE, ELF, DLL, Macho, Dylib):
     an implementation of a native executable files generator.
     """
 
+    def __init__(self):
+        super().__init__()
+
     def generate_payload(self, file_format: str, arch: str, data: bytes) -> bytes:
         """ Generate executable file with the specified data.
 
