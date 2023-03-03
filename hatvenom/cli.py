@@ -37,17 +37,20 @@ class HatVenomCLI(Generator, Badges):
     command-line interface for HatVenom.
     """
 
-    description = (
-        'HatVenom is a powerful payload generation tool that provides support'
-        ' for all common platforms and architectures.'
-    )
+    def __init__(self):
+        super().__init__()
 
-    parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('-f', '--format', dest='format', help='Platform to generate for.')
-    parser.add_argument('-a', '--arch', dest='arch', help='Architecture to generate for.')
-    parser.add_argument('-s', '--shellcode', dest='shellcode', help='Shellcode to inject.')
-    parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
-    args = parser.parse_args()
+        self.description = (
+            'HatVenom is a powerful payload generation tool that provides support'
+            ' for all common platforms and architectures.'
+        )
+
+        self.parser = argparse.ArgumentParser(description=self.description)
+        self.parser.add_argument('-f', '--format', dest='format', help='Platform to generate for.')
+        self.parser.add_argument('-a', '--arch', dest='arch', help='Architecture to generate for.')
+        self.parser.add_argument('-s', '--shellcode', dest='shellcode', help='Shellcode to inject.')
+        self.parser.add_argument('-o', '--output', dest='output', help='File to output generated payload.')
+        self.args = self.parser.parse_args()
 
     def start(self) -> None:
         """ Main command-line arguments handler.
