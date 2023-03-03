@@ -32,6 +32,9 @@ class HatVenom(Generator):
     implementations of payload generators.
     """
 
+    def __init__(self):
+        super().__init__()
+
     def generate(self, file_format: str, arch: str, shellcode: bytes) -> bytes:
         """ Generate payload with the specified shellcode.
 
