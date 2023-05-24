@@ -66,7 +66,7 @@ hatvenom.generate_to('elf', 'x64', shellcode)
 
 ## HatVenom CLI
 
-HatVenom also has their own command line interface that can be invoked by executing `hatvenom` command:
+HatVenom also has its own command line interface that can be invoked by executing `hatvenom` command:
 
 ```
 usage: hatvenom [-h] [-f FORMAT] [-a ARCH] [-s SHELLCODE] [-o OUTPUT]
