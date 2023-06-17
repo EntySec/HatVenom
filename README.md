@@ -32,11 +32,13 @@ pip3 install git+https://github.com/EntySec/HatVenom
 |-----------|---------|---------|-----------|-----------|-------------|------------|------------|--------------|--------------|
 | **elf**   | yes | yes | yes | no | yes | yes | yes | no | no |
 | **macho** | no | yes | no | no | no | no | no | no | no |
+| **dylib** | no | yes | no | no | no | no | no | no | no |
 | **pe**    | yes | yes | no | no | no | no | no | no | no |
 | **dll**   | yes | yes | no | no | no | no | no | no | no |
 
 * **elf** - Unix Executable & Linkable Format.
 * **macho** - macOS / Apple iOS Mach-O executable format.
+* **dylib** - macOS / Apple iOS dynamic library format.
 * **pe** - Windows Portable Executable format.
 * **dll** - Windows Dynamic Link Library format.
 
