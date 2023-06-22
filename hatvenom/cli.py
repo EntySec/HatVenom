@@ -26,7 +26,8 @@ import argparse
 import codecs
 import sys
 
-from .badges import Badges
+from badges import Badges
+
 from .generator import Generator
 
 
