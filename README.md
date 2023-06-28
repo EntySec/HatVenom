@@ -7,6 +7,9 @@
     <a href="https://github.com/EntySec/HatVenom">
         <img src="https://img.shields.io/badge/language-Python-blue.svg">
     </a>
+    <a href="https://github.com/EntySec/HatVenom/forks">
+        <img src="https://img.shields.io/github/forks/EntySec/HatVenom?color=green">
+    </a>
     <a href="https://github.com/EntySec/HatVenom/stargazers">
         <img src="https://img.shields.io/github/stars/EntySec/HatVenom?color=yellow">
     </a>
