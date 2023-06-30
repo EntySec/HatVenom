@@ -14,7 +14,7 @@
         <img src="https://img.shields.io/github/stars/EntySec/HatVenom?color=yellow">
     </a>
     <a href="https://www.codefactor.io/repository/github/EntySec/HatVenom">
-        <img src="https://www.codefactor.io/repository/github/EntySec/HatVenom/badge" />
+        <img src="https://www.codefactor.io/repository/github/EntySec/HatVenom/badge">
     </a>
 </p>
 
