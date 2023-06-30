@@ -13,6 +13,9 @@
     <a href="https://github.com/EntySec/HatVenom/stargazers">
         <img src="https://img.shields.io/github/stars/EntySec/HatVenom?color=yellow">
     </a>
+    <a href="https://www.codefactor.io/repository/github/EntySec/HatVenom">
+        <img src="https://www.codefactor.io/repository/github/EntySec/HatVenom/badge" />
+    </a>
 </p>
 
 HatVenom is a powerful payload generation tool that provides support for all common platforms and architectures.
