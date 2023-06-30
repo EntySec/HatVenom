@@ -96,5 +96,5 @@ def main() -> None:
     try:
         cli = HatVenomCLI()
         cli.start()
-    except Exception:
+    except BaseException:
         pass
