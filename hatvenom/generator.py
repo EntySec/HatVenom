@@ -50,6 +50,9 @@ class Generator(PE, ELF, DLL, Macho, Dylib):
         if file_format == 'elf':
             return self.pack_elf(arch, data)
 
+        if file_format == 'so':
+            return self.pack_elf(arch, data, shared=True)
+
         if file_format == 'dll':
             return self.pack_dll(arch, data)
 
