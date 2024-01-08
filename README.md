@@ -1,22 +1,10 @@
 # HatVenom
 
-<p>
-    <a href="https://entysec.com">
-        <img src="https://img.shields.io/badge/developer-EntySec-blue.svg">
-    </a>
-    <a href="https://github.com/EntySec/HatVenom">
-        <img src="https://img.shields.io/badge/language-Python-blue.svg">
-    </a>
-    <a href="https://github.com/EntySec/HatVenom/forks">
-        <img src="https://img.shields.io/github/forks/EntySec/HatVenom?color=green">
-    </a>
-    <a href="https://github.com/EntySec/HatVenom/stargazers">
-        <img src="https://img.shields.io/github/stars/EntySec/HatVenom?color=yellow">
-    </a>
-    <a href="https://www.codefactor.io/repository/github/EntySec/HatVenom">
-        <img src="https://www.codefactor.io/repository/github/EntySec/HatVenom/badge">
-    </a>
-</p>
+[![Developer](https://img.shields.io/badge/developer-EntySec-blue.svg)](https://entysec.com)
+[![Language](https://img.shields.io/badge/language-Python-blue.svg)](https://github.com/EntySec/HatVenom)
+[![Forks](https://img.shields.io/github/forks/EntySec/HatVenom?style=flat&color=green)](https://github.com/EntySec/HatVenom/forks)
+[![Stars](https://img.shields.io/github/stars/EntySec/HatVenom?style=flat&color=yellow)](https://github.com/EntySec/HatVenom/stargazers)
+[![CodeFactor](https://www.codefactor.io/repository/github/EntySec/HatVenom/badge)](https://www.codefactor.io/repository/github/EntySec/HatVenom)
 
 HatVenom is a powerful payload generation tool that provides support for all common platforms and architectures.
 
